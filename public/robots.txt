@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+<img src="/"C:\Users\shari\Downloads\Use_the_uploaded_yacht_image_as_the_exact_ref.gif"" />

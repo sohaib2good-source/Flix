@@ -1,0 +1,39 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "fields": [
+        { "name": "role", "type": "string", "description": "'client' or 'admin'" },
+        { "name": "email", "type": "string" },
+        { "name": "fullName", "type": "string" },
+        { "name": "nationality", "type": "string" },
+        { "name": "preferredLanguage", "type": "string" },
+        { "name": "passportNumber", "type": "string" },
+        { "name": "phone", "type": "string" }
+      ]
+    },
+    {
+      "name": "vessels",
+      "fields": [
+        { "name": "userId", "type": "string" },
+        { "name": "vesselName", "type": "string" },
+        { "name": "registrationNumber", "type": "string" },
+        { "name": "builder", "type": "string" },
+        { "name": "year", "type": "number" },
+        { "name": "length", "type": "number" },
+        { "name": "registry", "type": "string" },
+        { "name": "status", "type": "string" }
+      ]
+    },
+    {
+      "name": "applications",
+      "fields": [
+        { "name": "userId", "type": "string" },
+        { "name": "vesselId", "type": "string" },
+        { "name": "status", "type": "string", "description": "'Lead' | 'Waiting Documents' | 'Review' | 'Submitted' | 'Government Review' | 'Approved' | 'Completed'" },
+        { "name": "registry", "type": "string" },
+        { "name": "createdAt", "type": "timestamp" }
+      ]
+    }
+  ]
+}
