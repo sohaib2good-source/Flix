@@ -119,7 +119,7 @@ export default function AboutUs() {
         </div>
 
         <div className="w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 flex justify-start">
-          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-3 md:mt-24 lg:mt-28">
+          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-36 lg:mt-40 xl:mt-44">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
