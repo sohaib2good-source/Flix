@@ -12,7 +12,7 @@ interface LanguageContextType {
 const translations: Record<Language, Record<string, string>> = {
   en: {
     'nav.home': 'Home',
-    'nav.registries': 'Registries',
+    'nav.registries': 'Boat Registration',
     'nav.services': 'Services',
     'nav.pricing': 'Pricing',
     'hero.title': 'Register Your Yacht Anywhere in the World',
@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   de: {
     'nav.home': 'Startseite',
-    'nav.registries': 'Register',
+    'nav.registries': 'Bootsregistrierung',
     'nav.services': 'Dienstleistungen',
     'nav.pricing': 'Preise',
     'hero.title': 'Registrieren Sie Ihre Yacht weltweit',
@@ -32,7 +32,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   pl: {
     'nav.home': 'Strona Główna',
-    'nav.registries': 'Rejestry',
+    'nav.registries': 'Rejestracja Łodzi',
     'nav.services': 'Usługi',
     'nav.pricing': 'Cennik',
     'hero.title': 'Zarejestruj swój jacht w dowolnym miejscu na świecie',
@@ -42,7 +42,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   fr: {
     'nav.home': 'Accueil',
-    'nav.registries': 'Registres',
+    'nav.registries': 'Enregistrement de Bateau',
     'nav.services': 'Services',
     'nav.pricing': 'Tarifs',
     'hero.title': 'Enregistrez votre yacht partout dans le monde',
@@ -52,7 +52,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   es: {
     'nav.home': 'Inicio',
-    'nav.registries': 'Registros',
+    'nav.registries': 'Registro de Barcos',
     'nav.services': 'Servicios',
     'nav.pricing': 'Precios',
     'hero.title': 'Registre su yate en cualquier parte del mundo',
@@ -62,7 +62,7 @@ const translations: Record<Language, Record<string, string>> = {
   },
   fi: {
     'nav.home': 'Koti',
-    'nav.registries': 'Rekisterit',
+    'nav.registries': 'Veneen Rekisteröinti',
     'nav.services': 'Palvelut',
     'nav.pricing': 'Hinnasto',
     'hero.title': 'Rekisteröi jahtisi missä tahansa maailmassa',
