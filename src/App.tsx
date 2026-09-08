@@ -4,6 +4,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
+import RegistrationConfig from './pages/RegistrationConfig';
 import BoatRegistration from './pages/BoatRegistration';
 import AboutUs from './pages/AboutUs';
 import Navbar from './components/layout/Navbar';
@@ -24,8 +25,12 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/admin/*" element={<Admin />} />
-                  <Route path="/boat-registration" element={<BoatRegistration />} />
-                  <Route path="/registries" element={<BoatRegistration />} />
+                  {/* Step 1: Vessel & Service Configuration */}
+                  <Route path="/boat-registration" element={<RegistrationConfig />} />
+                  <Route path="/registries" element={<RegistrationConfig />} />
+                  {/* Step 2: Documentation Form */}
+                  <Route path="/boat-documentation" element={<BoatRegistration />} />
+                  <Route path="/boat-registration/documentation" element={<BoatRegistration />} />
                   <Route path="/form-submit" element={<BoatRegistration />} />
                   <Route path="/about" element={<AboutUs />} />
                 </Routes>

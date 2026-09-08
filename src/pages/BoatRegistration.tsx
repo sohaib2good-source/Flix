@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { useSeoMetadata } from '../hooks/useSeoMetadata';
+import { ArrowLeft, CheckCircle2, Ship, ShieldCheck, FileCheck } from 'lucide-react';
+import type { RegistrationPackage } from './RegistrationConfig';
 
 export default function BoatRegistration() {
   useSeoMetadata({
-    title: 'Boat & Yacht Registration | Felix Yacht',
+    title: 'Vessel Documentation & Application | Felix Yacht',
     description: 'Complete our secure official international boat and yacht registration application online. Expedited processing for global flag jurisdictions.',
+  });
+
+  const location = useLocation();
+  const [selectedPkg, setSelectedPkg] = useState<RegistrationPackage | null>(() => {
+    if (location.state) return location.state as RegistrationPackage;
+    try {
+      const stored = localStorage.getItem('felix_registration_package');
+      return stored ? JSON.parse(stored) : null;
+    } catch {
+      return null;
+    }
   });
 
   const [formData, setFormData] = useState({
@@ -103,19 +117,89 @@ export default function BoatRegistration() {
   };
 
   return (
-    <div className="pt-24 pb-12 px-6 md:px-12 min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
-        <div className="mb-8">
-          <span className="text-[10px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-widest bg-[var(--color-luxury-gold)]/10 px-3 py-1 rounded-full">
-            Official Application
-          </span>
-          <h1 className="text-3xl md:text-4xl font-heading font-bold text-[#081C3A] mt-3 mb-2">
-            Boat & Yacht Registration
-          </h1>
-          <p className="text-gray-500 text-sm md:text-base">
-            Please fill in the details below to initiate your official vessel registration.
-          </p>
+    <div className="pt-24 pb-16 px-4 md:px-8 min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto">
+        
+        {/* Step Progress Bar */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between max-w-md mx-auto mb-6">
+            <Link to="/boat-registration" className="flex items-center gap-2 group hover:opacity-90 transition-opacity">
+              <span className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
+                ✓
+              </span>
+              <span className="text-xs md:text-sm font-bold text-emerald-700 group-hover:underline">
+                1. Service & Options
+              </span>
+            </Link>
+            <div className="flex-1 h-0.5 bg-emerald-600 mx-4" />
+            <div className="flex items-center gap-2">
+              <span className="w-8 h-8 rounded-full bg-[#081C3A] text-white flex items-center justify-center font-bold text-sm shadow-md">
+                2
+              </span>
+              <span className="text-xs md:text-sm font-bold text-[#081C3A]">
+                Documentation
+              </span>
+            </div>
+          </div>
+
+          {/* Package summary notification banner if coming from Step 1 */}
+          {selectedPkg && (
+            <div className="bg-[#081C3A] text-white p-4 md:p-5 rounded-2xl shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-white/10">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[var(--color-luxury-gold)]/20 text-[var(--color-luxury-gold)] flex items-center justify-center font-bold">
+                  <Ship className="w-5 h-5" />
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase tracking-widest text-[var(--color-luxury-gold)] font-bold block">
+                    Selected Package
+                  </span>
+                  <div className="text-xs md:text-sm font-semibold">
+                    Polish Flag Registration • {
+                      selectedPkg.vesselClass === '0_to_7' ? '0 to 7 Meters (350 EUR)' :
+                      selectedPkg.vesselClass === '7_to_12' ? '7.1 to 12 Meters (450 EUR)' :
+                      '12.1 to 24 Meters (550 EUR)'
+                    }
+                    {selectedPkg.mmsiConfig === 'mmsi_full' ? ' • +MMSI License' : ''}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 self-end sm:self-center">
+                <span className="text-sm md:text-base font-bold font-mono text-[var(--color-luxury-gold)]">
+                  Total: {selectedPkg.totalPrice.toFixed(2)} EUR
+                </span>
+                <Link
+                  to="/boat-registration"
+                  className="text-[11px] font-semibold text-white/80 hover:text-white underline underline-offset-2 ml-2"
+                >
+                  Edit Options
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
+
+        <div className="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+          <div className="mb-8">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-widest bg-[var(--color-luxury-gold)]/10 px-3 py-1 rounded-full">
+                Step 2: Official Documentation Form
+              </span>
+              <Link
+                to="/boat-registration"
+                className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-[#081C3A] font-semibold transition-colors"
+              >
+                <ArrowLeft className="w-3.5 h-3.5" />
+                <span>Back to Package Selection</span>
+              </Link>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-heading font-bold text-[#081C3A] mt-3 mb-2">
+              Boat & Yacht Registration
+            </h1>
+            <p className="text-gray-500 text-sm md:text-base">
+              Please fill in the details below to initiate your official vessel registration.
+            </p>
+          </div>
         
         <form onSubmit={handleSubmit} className="space-y-8">
           
@@ -406,6 +490,7 @@ export default function BoatRegistration() {
             </button>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );
