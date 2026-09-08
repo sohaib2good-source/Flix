@@ -98,7 +98,7 @@ export default function AboutUs() {
         {/* Background Image - Enlarged, Bright, Full Edge-to-Edge Cover */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="/121.png"
+            src="/121.jpeg"
             alt="Felix Yacht International"
             className="w-full h-full object-cover object-center scale-110 md:scale-115 transform-gpu brightness-115 contrast-105 transition-transform duration-1000"
           />
