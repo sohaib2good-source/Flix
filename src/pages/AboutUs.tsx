@@ -94,21 +94,32 @@ export default function AboutUs() {
   return (
     <div className="w-full bg-[#F5F7FA] text-[#081C3A]">
       {/* HERO SECTION */}
-      <section className="relative min-h-[85vh] flex items-center pt-32 pb-24 md:pt-40 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
-        {/* Background Image - Enlarged, Bright, Full Edge-to-Edge Cover */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
+      <section className="relative min-h-[auto] md:min-h-[85vh] flex flex-col md:flex-row items-center pt-24 md:pt-40 pb-12 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
+        {/* Desktop Background Image - Full Bleed Cover */}
+        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden">
           <img
             src="/121.jpeg"
             alt="Felix Yacht International"
-            className="w-full h-full object-cover object-center scale-110 md:scale-115 transform-gpu brightness-115 contrast-105 transition-transform duration-1000"
+            className="w-full h-full object-cover object-center scale-105 transform-gpu brightness-115 contrast-105 transition-transform duration-1000"
           />
           {/* Subtle translucent gradient to keep image bright and vibrant while blending cleanly */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#081C3A]/70 via-[#081C3A]/30 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#081C3A] via-[#081C3A]/40 to-transparent" />
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:pl-12 lg:pr-6 relative z-10 flex justify-start">
-          <div className="max-w-[440px] bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-14 md:mt-24 lg:mt-28">
+        {/* Mobile Hero View: Full Image completely shown without any cropping */}
+        <div className="md:hidden w-full px-4 pt-2 pb-3 z-10">
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-[#081C3A]">
+            <img
+              src="/121.jpeg"
+              alt="Felix Yacht International"
+              className="w-full h-auto block rounded-2xl brightness-110 contrast-105"
+            />
+          </div>
+        </div>
+
+        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 flex justify-start">
+          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-3 md:mt-24 lg:mt-28">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -156,9 +167,9 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* STATS STRIP */}
-      <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+      {/* STATS STRIP - 2x2 on mobile, 4 cols on desktop */}
+      <section className="relative z-20 -mt-6 md:-mt-10 max-w-7xl mx-auto px-4 md:px-12">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-5 md:p-10 grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 divide-y-0 sm:divide-x divide-gray-100">
           {stats.map((stat, idx) => (
             <motion.div
               key={idx}
@@ -166,15 +177,15 @@ export default function AboutUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`flex flex-col ${idx !== 0 ? 'pt-6 sm:pt-0 sm:pl-8' : ''}`}
+              className={`flex flex-col ${idx % 2 !== 0 ? 'pl-2 sm:pl-0' : ''} ${idx >= 2 ? 'pt-2 sm:pt-0' : ''} ${idx !== 0 ? 'sm:pl-8' : ''}`}
             >
-              <span className="text-3xl md:text-4xl font-extrabold font-heading text-[#081C3A] tracking-tight">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold font-heading text-[#081C3A] tracking-tight">
                 {stat.value}
               </span>
-              <span className="text-xs font-bold text-[var(--color-luxury-gold)] uppercase tracking-wider mt-1 mb-2">
+              <span className="text-[10px] sm:text-xs font-bold text-[var(--color-luxury-gold)] uppercase tracking-wider mt-1 mb-1">
                 {stat.label}
               </span>
-              <p className="text-xs text-gray-500 leading-normal">
+              <p className="text-[10px] sm:text-xs text-gray-500 leading-normal">
                 {stat.desc}
               </p>
             </motion.div>
@@ -199,19 +210,19 @@ export default function AboutUs() {
               Whether you are acquiring a brand-new superyacht in Cannes, a sport-cruiser in Miami, or re-flagging an existing fleet under the highly regarded Polish EU flag with lifetime validity, our certified maritime documentation specialists handle everything from title deeds and bill of sale verification to official sworn translations and MMSI radio licensing.
             </p>
 
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                <CheckCircle2 className="w-5 h-5 text-[var(--color-luxury-gold)] shrink-0 mt-0.5" />
+            <div className="pt-4 grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-luxury-gold)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-[#081C3A] uppercase tracking-wider">Direct Government Liaison</h4>
-                  <p className="text-xs text-gray-500 mt-1">Official agent status with certified maritime ministries.</p>
+                  <h4 className="text-[10px] sm:text-xs font-bold text-[#081C3A] uppercase tracking-wider">Direct Government Liaison</h4>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-1">Official agent status with certified maritime ministries.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                <CheckCircle2 className="w-5 h-5 text-[var(--color-luxury-gold)] shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--color-luxury-gold)] shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-bold text-[#081C3A] uppercase tracking-wider">Zero Hidden Surcharges</h4>
-                  <p className="text-xs text-gray-500 mt-1">All government registry fees and notary costs disclosed upfront.</p>
+                  <h4 className="text-[10px] sm:text-xs font-bold text-[#081C3A] uppercase tracking-wider">Zero Hidden Surcharges</h4>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mt-1">All government registry fees and notary costs disclosed upfront.</p>
                 </div>
               </div>
             </div>
@@ -251,22 +262,22 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* CORE PILLARS SECTION */}
-      <section className="py-20 bg-white border-y border-gray-200/80">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-[11px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-[0.25em] bg-[var(--color-luxury-gold)]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
+      {/* CORE PILLARS SECTION - 2x2 Grid on Mobile (4 boxes) */}
+      <section className="py-16 md:py-20 bg-white border-y border-gray-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-[0.25em] bg-[var(--color-luxury-gold)]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
               Why Discerning Owners Choose Us
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#081C3A]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#081C3A]">
               Built On Four Immutable Pillars
             </h2>
-            <p className="text-gray-500 text-sm md:text-base mt-4">
+            <p className="text-gray-500 text-xs sm:text-sm md:text-base mt-3 md:mt-4">
               We combine in-depth admiralty law proficiency with modern automated document verification to deliver an unparalleled registration service.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
             {pillars.map((pillar, idx) => {
               const IconComponent = pillar.icon;
               return (
@@ -276,23 +287,23 @@ export default function AboutUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-[#F5F7FA] p-8 rounded-2xl border border-gray-200/70 hover:border-[var(--color-luxury-gold)]/50 transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
+                  className="bg-[#F5F7FA] p-3.5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-200/70 hover:border-[var(--color-luxury-gold)]/50 transition-all duration-300 hover:shadow-lg flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-[#081C3A] text-[var(--color-luxury-gold)] flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
-                      <IconComponent className="w-6 h-6" />
+                    <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#081C3A] text-[var(--color-luxury-gold)] flex items-center justify-center mb-3 sm:mb-6 group-hover:scale-105 transition-transform">
+                      <IconComponent className="w-4 h-4 sm:w-6 sm:h-6" />
                     </div>
-                    <h3 className="text-lg font-heading font-bold text-[#081C3A] mb-3">
+                    <h3 className="text-xs sm:text-base md:text-lg font-heading font-bold text-[#081C3A] mb-1.5 sm:mb-3 leading-snug">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs text-gray-600 leading-relaxed mb-6">
+                    <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed mb-3 sm:mb-6">
                       {pillar.desc}
                     </p>
                   </div>
-                  <div className="pt-4 border-t border-gray-200/60">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-luxury-gold)] flex items-center gap-1.5">
-                      <FileCheck2 className="w-3.5 h-3.5" />
-                      {pillar.highlight}
+                  <div className="pt-2.5 sm:pt-4 border-t border-gray-200/60">
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-[var(--color-luxury-gold)] flex items-center gap-1 sm:gap-1.5">
+                      <FileCheck2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+                      <span className="truncate">{pillar.highlight}</span>
                     </span>
                   </div>
                 </motion.div>
@@ -302,41 +313,41 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* GLOBAL PRESENCE & OFFICES */}
-      <section className="py-20 md:py-28 max-w-7xl mx-auto px-6 md:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-[11px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-[0.25em] bg-[var(--color-luxury-gold)]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
+      {/* GLOBAL PRESENCE & OFFICES - 2x2 Grid on Mobile (4 boxes) */}
+      <section className="py-16 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+          <span className="text-[10px] sm:text-[11px] font-bold text-[var(--color-luxury-gold)] uppercase tracking-[0.25em] bg-[var(--color-luxury-gold)]/10 px-3.5 py-1.5 rounded-full inline-block mb-3">
             Worldwide Network
           </span>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#081C3A]">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-[#081C3A]">
             Global Operations Hubs
           </h2>
-          <p className="text-gray-500 text-sm md:text-base mt-4">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base mt-3 md:mt-4">
             With physical presences in key maritime jurisdictions, we interact directly with flag administrations to expedite applications on your behalf.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {offices.map((office, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 md:p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-white p-3.5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <MapPin className="w-4 h-4 text-[var(--color-luxury-gold)]" />
-                  <h3 className="font-heading font-bold text-[#081C3A] text-base">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
+                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[var(--color-luxury-gold)] shrink-0" />
+                  <h3 className="font-heading font-bold text-[#081C3A] text-xs sm:text-base leading-snug">
                     {office.city}
                   </h3>
                 </div>
-                <p className="text-xs font-semibold text-[#0E4B82] mb-4">
+                <p className="text-[10px] sm:text-xs font-semibold text-[#0E4B82] mb-2 sm:mb-4 leading-snug">
                   {office.role}
                 </p>
-                <p className="text-xs text-gray-500 leading-relaxed mb-6">
+                <p className="text-[10px] sm:text-xs text-gray-500 leading-relaxed mb-3 sm:mb-6">
                   {office.address}
                 </p>
               </div>
-              <div className="pt-4 border-t border-gray-100 text-xs font-medium text-gray-700">
+              <div className="pt-2.5 sm:pt-4 border-t border-gray-100 text-[10px] sm:text-xs font-medium text-gray-700 truncate">
                 {office.phone}
               </div>
             </div>
