@@ -94,7 +94,7 @@ export default function AboutUs() {
   return (
     <div className="w-full bg-[#F5F7FA] text-[#081C3A]">
       {/* HERO SECTION */}
-      <section className="relative min-h-[auto] md:min-h-[85vh] flex flex-col md:flex-row items-center pt-24 md:pt-40 pb-6 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
+      <section className="relative min-h-[auto] md:min-h-[85vh] flex flex-col md:flex-row items-center pt-24 md:pt-40 pb-6 md:pb-20 text-white overflow-hidden bg-[#081C3A]">
         {/* Desktop Background Image - Full Bleed Cover */}
         <div className="hidden md:block absolute inset-0 z-0 overflow-hidden">
           <img
@@ -130,7 +130,7 @@ export default function AboutUs() {
 
         {/* Desktop Hero Card Overlay */}
         <div className="hidden md:flex w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 justify-start">
-          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-36 lg:mt-40 xl:mt-44">
+          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-48 lg:mt-56 xl:mt-60">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
