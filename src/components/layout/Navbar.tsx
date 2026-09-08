@@ -59,12 +59,12 @@ export default function Navbar() {
             <span className="font-heading font-bold text-2xl tracking-tighter leading-none">FELIX YACHT</span>
             <span className="text-[9px] tracking-[0.3em] uppercase opacity-60 ml-0.5">International Registrations</span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-7 text-[10px] font-bold uppercase tracking-wider text-[#081C3A]/90">
-            <Link to="/" className="hover:text-[#081C3A] transition-colors">{t('nav.home')}</Link>
-            <Link to="/boat-registration" className="hover:text-[#081C3A] transition-colors">{t('nav.registries')}</Link>
-            <Link to="/pricing" className="hover:text-[#081C3A] transition-colors">{t('nav.pricing')}</Link>
-            <Link to="/services" className="hover:text-[#081C3A] transition-colors">{t('nav.services')}</Link>
-            <Link to="/about" className="hover:text-[#081C3A] transition-colors">{t('nav.about')}</Link>
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] font-bold uppercase tracking-wider text-[#081C3A]">
+            <Link to="/" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.home')}</Link>
+            <Link to="/boat-registration" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.registries')}</Link>
+            <Link to="/pricing" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.pricing')}</Link>
+            <Link to="/services" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.services')}</Link>
+            <Link to="/about" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.about')}</Link>
           </nav>
         </div>
 
