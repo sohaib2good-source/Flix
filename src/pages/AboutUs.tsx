@@ -194,7 +194,7 @@ export default function AboutUs() {
               Navigating cross-border maritime jurisdictions, tonnage rules, and flag state restrictions is traditionally one of the most stressful aspects of vessel ownership. At Felix Yacht, our foundation was built on one clear objective: creating an expedited, transparent, and legally rock-solid gateway to premier global boat registries.
             </p>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-              Whether you are acquiring a brand-new superyacht in Cannes, a sport-cruiser in Miami, or re-flagging an existing fleet under the highly regarded Polish EU flag or UK Part 1 register, our certified maritime documentation specialists handle everything from title deeds and bill of sale verification to official sworn translations and MMSI radio licensing.
+              Whether you are acquiring a brand-new superyacht in Cannes, a sport-cruiser in Miami, or re-flagging an existing fleet under the highly regarded Polish EU flag with lifetime validity, our certified maritime documentation specialists handle everything from title deeds and bill of sale verification to official sworn translations and MMSI radio licensing.
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">

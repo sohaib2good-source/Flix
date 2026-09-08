@@ -124,24 +124,33 @@ export default function Home() {
         </div>
 
         {/* Registry Preview */}
-        <div className="flex-1 py-10 px-6 md:px-12 flex flex-col md:flex-row items-center gap-6 overflow-hidden w-full">
-          <div className="text-[10px] uppercase font-bold text-[#081C3A]/40 md:rotate-180 tracking-widest" style={{ writingMode: 'vertical-rl' }}>Top Flag Registries</div>
-          <div className="flex space-x-3 overflow-x-auto pb-4 md:pb-0 w-full md:w-auto scrollbar-hide">
-            {[
-              { flag: '🇬🇧', name: 'United Kingdom' },
-              { flag: '🇵🇱', name: 'Poland' },
-              { flag: '🇲🇹', name: 'Malta' },
-              { flag: '🇰🇾', name: 'Cayman Islands' }
-            ].map((reg, i) => (
-              <div key={i} className="w-32 h-20 shrink-0 bg-[#F5F7FA] border border-[#081C3A]/5 rounded-lg flex flex-col items-center justify-center p-3 hover:border-[#CDA349] transition-all cursor-pointer group">
-                <span className="text-lg mb-1">{reg.flag}</span>
-                <span className="text-[10px] font-bold uppercase tracking-tighter text-center">{reg.name}</span>
+        <div className="flex-1 py-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden w-full">
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+            <div className="text-[10px] uppercase font-bold text-[#081C3A]/50 tracking-widest shrink-0">
+              Official Flag Registry
+            </div>
+            <Link 
+              to="/boat-registration" 
+              className="px-6 py-3.5 bg-[#F5F7FA] border border-[#081C3A]/10 rounded-xl flex items-center gap-4 hover:border-[#CDA349] hover:bg-white transition-all group shadow-sm w-full sm:w-auto"
+            >
+              <span className="text-3xl">🇵🇱</span>
+              <div className="text-left">
+                <span className="text-xs font-bold uppercase tracking-tight block text-[#081C3A] group-hover:text-[#0E4B82]">
+                  Poland Registration (EU)
+                </span>
+                <span className="text-[10px] text-[#CDA349] font-semibold block">
+                  Lifetime Flag • No Renewal Needed • Valid Worldwide
+                </span>
               </div>
-            ))}
+            </Link>
           </div>
-          <div className="hidden md:flex flex-1 justify-end">
-            <Link to="/registries" className="w-10 h-10 rounded-full border border-[#081C3A]/10 flex items-center justify-center hover:bg-[#081C3A] hover:text-white cursor-pointer transition-all">
-              <span className="text-lg leading-none">→</span>
+          <div className="hidden md:flex items-center gap-2">
+            <Link 
+              to="/boat-registration" 
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#081C3A] hover:text-[#CDA349] transition-colors"
+            >
+              <span>Apply for Polish Flag</span>
+              <span className="text-sm">→</span>
             </Link>
           </div>
         </div>
@@ -191,7 +200,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { name: 'Alexander V.', country: '🇩🇪 Germany', text: 'Incredibly fast Polish registration for my sailing yacht. The entire process was handled professionally and I had my certificate within days.' },
-              { name: 'Sarah M.', country: '🇬🇧 United Kingdom', text: 'Felix Yacht made transferring my UK Part 1 registration seamless. Their attention to detail and knowledge of maritime law is unmatched.' },
+              { name: 'Sarah M.', country: '🇬🇧 United Kingdom', text: 'Felix Yacht made registering my yacht under the Polish EU flag completely seamless. Fast provisional issue and outstanding communication.' },
               { name: 'Marco R.', country: '🇮🇹 Italy', text: 'The best registration service I have used in 20 years of yacht ownership. Clear communication and no hidden fees.' }
             ].map((review, i) => (
               <motion.div
@@ -228,11 +237,7 @@ export default function Home() {
               <div>
                 <label className="block text-sm font-medium text-white/80 mb-2">Registry Flag</label>
                 <select className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
-                  <option value="poland" className="text-gray-900">Poland (EU)</option>
-                  <option value="san_marino" className="text-gray-900">San Marino</option>
-                  <option value="uk" className="text-gray-900">United Kingdom</option>
-                  <option value="delaware" className="text-gray-900">Delaware, USA</option>
-                  <option value="bvi" className="text-gray-900">BVI</option>
+                  <option value="poland" className="text-gray-900">Poland (EU) - Lifetime Flag</option>
                 </select>
               </div>
               <div>

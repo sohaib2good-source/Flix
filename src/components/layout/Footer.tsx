@@ -56,15 +56,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Top Registries */}
+          {/* Official Registry */}
           <div>
-            <h4 className="text-white font-bold font-heading mb-6 text-lg">Top Registries</h4>
+            <h4 className="text-white font-bold font-heading mb-6 text-lg">Official Registry</h4>
             <ul className="space-y-4 text-sm">
-              <li><Link to="/registry/poland" className="hover:text-[var(--color-luxury-gold)] transition-colors">Poland Registration</Link></li>
-              <li><Link to="/registry/san-marino" className="hover:text-[var(--color-luxury-gold)] transition-colors">San Marino Registration</Link></li>
-              <li><Link to="/registry/uk" className="hover:text-[var(--color-luxury-gold)] transition-colors">UK Registration (Part 1)</Link></li>
-              <li><Link to="/registry/delaware" className="hover:text-[var(--color-luxury-gold)] transition-colors">Delaware Registration</Link></li>
-              <li><Link to="/registry/bvi" className="hover:text-[var(--color-luxury-gold)] transition-colors">BVI Registration</Link></li>
+              <li><Link to="/boat-registration" className="hover:text-[var(--color-luxury-gold)] transition-colors">Poland Boat Registration (EU)</Link></li>
+              <li><Link to="/boat-registration" className="hover:text-[var(--color-luxury-gold)] transition-colors">Polish MMSI Radio License</Link></li>
+              <li><Link to="/boat-registration" className="hover:text-[var(--color-luxury-gold)] transition-colors">Provisional Certificate (48h)</Link></li>
+              <li><Link to="/boat-registration" className="hover:text-[var(--color-luxury-gold)] transition-colors">Commercial & Private Flag</Link></li>
             </ul>
           </div>
 
