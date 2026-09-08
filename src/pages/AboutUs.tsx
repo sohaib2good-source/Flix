@@ -130,12 +130,12 @@ export default function AboutUs() {
 
         {/* Desktop Hero Card Overlay */}
         <div className="hidden md:flex w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 justify-start">
-          <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-48 lg:mt-56 xl:mt-60">
+          <div className="w-full md:max-w-[355px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-4 md:p-5 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-48 lg:mt-56 xl:mt-60">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[var(--color-luxury-gold)] text-[10px] font-semibold tracking-wider uppercase mb-3"
+              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[var(--color-luxury-gold)] text-[9px] font-semibold tracking-wider uppercase mb-2.5"
             >
               <Anchor className="w-2.5 h-2.5" />
               <span>International Vessel Documentation</span>
@@ -145,7 +145,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-2xl md:text-3xl lg:text-[34px] font-heading font-extrabold tracking-tight leading-[1.18] mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
+              className="text-xl md:text-2xl lg:text-[26px] font-heading font-extrabold tracking-tight leading-[1.18] mb-2.5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             >
               Empowering Global <br />
               <span className="text-[var(--color-luxury-gold)]">Maritime Sovereignty</span>
@@ -155,7 +155,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-[11px] md:text-xs lg:text-[13px] text-white/90 leading-relaxed max-w-sm mb-5 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
+              className="text-[11px] md:text-xs text-white/90 leading-relaxed mb-4 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
             >
               For over a decade, Felix Yacht has stood as the premier international authority in yacht registration, flag state compliance, and maritime legal advisory—enabling owners, brokers, and captains to sail worldwide with total legal security.
             </motion.p>
@@ -168,7 +168,7 @@ export default function AboutUs() {
             >
               <Link
                 to="/boat-registration"
-                className="px-5 py-2.5 bg-[var(--color-luxury-gold)] hover:bg-[#b58f3c] text-[#081C3A] font-bold text-[10px] uppercase tracking-widest rounded-lg transition-all shadow-lg hover:shadow-xl hover:translate-y-[-1px] inline-flex items-center gap-2"
+                className="px-4 py-2 bg-[var(--color-luxury-gold)] hover:bg-[#b58f3c] text-[#081C3A] font-bold text-[10px] uppercase tracking-widest rounded-lg transition-all shadow-lg hover:shadow-xl hover:translate-y-[-1px] inline-flex items-center gap-2"
               >
                 <span>Register Vessel Now</span>
                 <ArrowRight className="w-3 h-3" />
