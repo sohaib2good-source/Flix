@@ -43,60 +43,84 @@ const features = [
 interface CardProps {
   key?: React.Key;
   i: number;
+  total: number;
   title: string;
   description: string;
   icon: any;
   color: string;
   image: string;
   progress: MotionValue<number>;
-  range: [number, number];
-  targetScale: number;
 }
 
-const DesktopCard = ({ i, title, description, icon: Icon, color, image, progress, range, targetScale }: CardProps) => {
-  const scale = useTransform(progress, range, [1, targetScale]);
-  const entryY = useTransform(progress, [range[0] - 0.2, range[0]], ['100%', '0%']);
+const Card = ({
+  i,
+  total,
+  title,
+  description,
+  icon: Icon,
+  color,
+  image,
+  progress,
+}: CardProps) => {
+  // Pacing calculations: 5 cards with smooth sequential entry and progressive scale down
+  const enterStart = i === 0 ? 0 : (i - 1) * 0.18 + 0.04;
+  const enterEnd = i === 0 ? 0 : i * 0.18;
+
+  const entryY = useTransform(
+    progress,
+    [enterStart, Math.max(enterStart + 0.01, enterEnd)],
+    [i === 0 ? '0%' : '100%', '0%']
+  );
+
+  const scaleStart = i * 0.18;
+  const scaleEnd = 0.85;
+  const targetScale = 1 - (total - 1 - i) * 0.035;
+
+  const scale = useTransform(
+    progress,
+    [scaleStart, Math.max(scaleStart + 0.1, scaleEnd)],
+    [1, targetScale]
+  );
 
   return (
-    <div className="h-screen w-full flex items-center justify-center sticky top-0">
-      <motion.div 
-        style={{ 
-          scale, 
-          top: `calc(15vh + ${i * 20}px)`, 
-          y: i === 0 ? 0 : entryY 
+    <div className="h-screen w-full flex items-center justify-center sticky top-0 px-4 pointer-events-none">
+      <motion.div
+        style={{
+          scale,
+          y: i === 0 ? 0 : entryY,
         }}
-        className="flex flex-col relative w-[70%] max-w-3xl h-[320px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/20 origin-top bg-white"
+        className="pointer-events-auto flex flex-col relative w-full max-w-[340px] sm:max-w-md md:max-w-3xl rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-gray-100/80 origin-top bg-white"
       >
-        <div className="flex flex-row w-full h-full bg-white">
-          {/* Content Side */}
-          <div className="w-1/2 p-8 lg:p-10 flex flex-col justify-center relative bg-white z-10">
-            <div 
+        <div className="flex flex-col md:flex-row w-full h-[370px] sm:h-[390px] md:h-[320px] bg-white">
+          {/* Text Content */}
+          <div className="order-2 md:order-1 w-full md:w-1/2 p-5 sm:p-6 md:p-10 flex flex-col justify-center relative bg-white z-10 flex-1">
+            <div
               className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-10 pointer-events-none"
               style={{ backgroundColor: color }}
             />
-            
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shadow-md text-white"
+
+            <div
+              className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-2.5 md:mb-5 shadow-sm text-white shrink-0"
               style={{ backgroundColor: color }}
             >
-              <Icon className="w-6 h-6" />
+              <Icon className="w-5 h-5 md:w-6 md:h-6" />
             </div>
-            
-            <h3 className="text-2xl font-heading font-bold text-[#081C3A] mb-3 leading-tight">
+
+            <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-[#081C3A] mb-1.5 md:mb-3 leading-tight">
               {title}
             </h3>
-            
-            <p className="text-gray-500 text-sm leading-relaxed">
+
+            <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
               {description}
             </p>
           </div>
 
-          {/* Image Side */}
-          <div className="w-1/2 h-full relative overflow-hidden">
+          {/* Image */}
+          <div className="order-1 md:order-2 w-full md:w-1/2 h-40 sm:h-44 md:h-full relative overflow-hidden bg-gray-100 shrink-0">
             <div className="absolute inset-0 bg-black/5 z-10" />
-            <img 
-              src={image} 
-              alt={title} 
+            <img
+              src={image}
+              alt={title}
               className="w-full h-full object-cover"
             />
           </div>
@@ -115,90 +139,27 @@ export default function StackingFeatures() {
 
   return (
     <section className="bg-[var(--color-background)] relative">
-      {/* MOBILE VIEW (< md): Clean, natural scrolling with full card visibility, no scroll-jacking or locking */}
-      <div className="md:hidden py-16 px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-heading font-bold text-[var(--color-primary-navy)] mb-3">
-            Why Choose Felix Yacht
-          </h2>
-          <p className="text-gray-500 text-sm max-w-sm mx-auto leading-relaxed">
-            Experience seamless international yacht registration with our premium services.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-6 max-w-md mx-auto">
-          {features.map((feature, i) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-30px" }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100/80 flex flex-col"
-              >
-                {/* Full-width clean image */}
-                <div className="w-full h-48 relative overflow-hidden bg-gray-100">
-                  <img 
-                    src={feature.image} 
-                    alt={feature.title} 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                </div>
-
-                {/* Card Content */}
-                <div className="p-6 flex flex-col">
-                  <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 shadow-sm text-white"
-                    style={{ backgroundColor: feature.color }}
-                  >
-                    <Icon className="w-5 h-5" />
-                  </div>
-
-                  <h3 className="text-xl font-heading font-bold text-[#081C3A] mb-2 leading-tight">
-                    {feature.title}
-                  </h3>
-
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+      {/* Title Header - Sticks cleanly at top as cards scroll over */}
+      <div className="pb-8 pt-8 md:pt-12 text-center sticky top-14 md:top-16 z-0 pointer-events-none px-4">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-2">
+          Why Choose Felix Yacht
+        </h2>
+        <p className="text-gray-500 max-w-xl mx-auto text-xs sm:text-sm md:text-base">
+          Experience seamless international yacht registration with our premium services.
+        </p>
       </div>
 
-      {/* DESKTOP VIEW (>= md): Full 3D stacking sticky animation */}
-      <div className="hidden md:block relative">
-        <div className="pb-24 pt-8 text-center sticky top-0 z-0 h-screen flex flex-col items-center justify-start pointer-events-none">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-[var(--color-primary-navy)] mb-6">
-            Why Choose Felix Yacht
-          </h2>
-          <p className="text-gray-500 max-w-4xl mx-auto text-xl px-4">
-            Experience seamless international yacht registration with our premium services.
-          </p>
-        </div>
-        
-        <div ref={containerRef} className="relative z-10" style={{ height: '500vh' }}>
-          {features.map((feature, i) => {
-            const range = [i * 0.25, 1];
-            const targetScale = 1 - ((features.length - i) * 0.04);
-            
-            return (
-              <DesktopCard 
-                key={i}
-                i={i}
-                {...feature}
-                progress={scrollYProgress}
-                range={range as [number, number]}
-                targetScale={targetScale}
-              />
-            );
-          })}
-        </div>
+      {/* Stacking Cards Container */}
+      <div ref={containerRef} className="relative z-10" style={{ height: '320vh' }}>
+        {features.map((feature, i) => (
+          <Card
+            key={i}
+            i={i}
+            total={features.length}
+            {...feature}
+            progress={scrollYProgress}
+          />
+        ))}
       </div>
     </section>
   );
