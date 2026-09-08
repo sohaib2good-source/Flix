@@ -8,7 +8,7 @@ export default function BoatRegistration() {
   });
 
   const [formData, setFormData] = useState({
-    // Section 1: Address Information
+    // Section 1: Owner Profile
     contactType: 'private',
     firstName: '',
     lastName: '',
@@ -119,9 +119,9 @@ export default function BoatRegistration() {
         
         <form onSubmit={handleSubmit} className="space-y-8">
           
-          {/* Section 1: Address Information */}
+          {/* Section 1: Owner Profile */}
           <div className="bg-gray-50/60 p-6 md:p-8 rounded-xl border border-gray-200/80">
-            <h2 className="text-xl font-semibold mb-4 text-[#081C3A] border-b border-gray-200 pb-2">1. Address Information</h2>
+            <h2 className="text-xl font-semibold mb-4 text-[#081C3A] border-b border-gray-200 pb-2">1. Owner Profile</h2>
             
             <div className="mb-5 flex gap-6">
               <label className="flex items-center gap-2 cursor-pointer font-medium text-sm text-[#081C3A]">
