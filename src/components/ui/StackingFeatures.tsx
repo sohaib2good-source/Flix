@@ -62,37 +62,42 @@ const Card = ({
   image,
   progress,
 }: CardProps) => {
-  // Pacing:
-  // Card 0: already in position
-  // Card 1: enters 0.10 -> 0.23
-  // Card 2: enters 0.23 -> 0.36
-  // Card 3: enters 0.36 -> 0.49
-  // Card 4 (LAST TILE: Concierge Support): enters 0.49 -> 0.62
-  // Generous settling buffer: from 0.62 to 1.0 (38% of total scroll distance),
-  // Card 4 stays completely settled, visible, and stacked on top of the deck!
-  const enterStart = i === 0 ? 0 : 0.10 + (i - 1) * 0.13;
-  const enterEnd = i === 0 ? 0 : 0.10 + i * 0.13;
+  // Equal, balanced pacing for all 5 cards:
+  // Tile 1 (Card 0): present from the start (0.00 -> 0.12)
+  // Tile 2 (Card 1): enters 0.12 -> 0.27
+  // Tile 3 (Card 2): enters 0.27 -> 0.42
+  // Tile 4 (Card 3): enters 0.42 -> 0.57
+  // Tile 5 (Card 4: 24/7 Concierge Support): enters 0.57 -> 0.72
+  // Generous settling buffer: 0.72 -> 1.00 (Tile 5 stays completely stationary, visible & stacked on top)
+  const enterStart = i === 0 ? 0 : 0.12 + (i - 1) * 0.15;
+  const enterEnd = i === 0 ? 0 : 0.12 + i * 0.15;
 
+  // Matching 'vh' units ensure seamless, glitch-free Framer Motion interpolation
   const entryY = useTransform(
     progress,
     [enterStart, Math.max(enterStart + 0.02, enterEnd)],
-    [i === 0 ? '0%' : '100vh', '0%']
+    [i === 0 ? '0vh' : '100vh', '0vh']
   );
 
-  // Scaling: cards underneath scale down gently as cards stack on top
-  const targetScale = 1 - (total - 1 - i) * 0.03;
+  // Cards underneath scale down gently as cards stack on top
+  // Tile 5 (i = 4) stays locked at scale 1.0
+  const targetScale = 1 - (total - 1 - i) * 0.035;
+  const scaleStart = Math.min(enterEnd, 0.70);
+  const scaleEnd = 0.72;
+
   const scale = useTransform(
     progress,
-    [enterEnd, Math.min(enterEnd + 0.35, 0.65)],
+    [scaleStart, Math.max(scaleStart + 0.02, scaleEnd)],
     [1, i === total - 1 ? 1 : targetScale]
   );
 
   return (
     <motion.div
       style={{
-        scale,
-        y: i === 0 ? 0 : entryY,
-        top: `calc(8px + ${i * 13}px)`,
+        zIndex: i + 1, // Explicit z-index guarantees Tile 5 (z: 5) is always on top of Tile 4 (z: 4)
+        scale: i === total - 1 ? 1 : scale,
+        y: i === 0 ? '0vh' : entryY,
+        top: `calc(6px + ${i * 12}px)`,
       }}
       className="absolute pointer-events-auto w-[90%] md:w-[70%] max-w-sm sm:max-w-md md:max-w-3xl h-[345px] sm:h-[330px] md:h-[310px] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] border border-gray-100/90 origin-top bg-white"
     >
@@ -142,7 +147,7 @@ export default function StackingFeatures() {
   });
 
   return (
-    <section ref={containerRef} className="bg-[var(--color-background)] relative" style={{ height: '320vh' }}>
+    <section ref={containerRef} className="bg-[var(--color-background)] relative" style={{ height: '340vh' }}>
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start overflow-hidden pointer-events-none pt-16 md:pt-20">
         {/* Title Header */}
         <div className="text-center px-4 mb-2 md:mb-4 pointer-events-auto shrink-0">
