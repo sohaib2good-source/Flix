@@ -90,7 +90,7 @@ export default function RegistrationConfig() {
   };
 
   return (
-    <div className="pt-24 pb-28 px-4 md:px-8 min-h-screen bg-gray-50">
+    <div className="pt-24 pb-16 px-4 md:px-8 min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto">
         
         {/* Step Progress Bar */}
@@ -349,7 +349,7 @@ export default function RegistrationConfig() {
         </div>
 
         {/* Section 6: Delivery Method */}
-        <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-sm mb-12">
+        <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200/80 shadow-sm mb-6">
           <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
             <Truck className="w-5 h-5 text-[var(--color-luxury-gold)]" />
             <h2 className="text-sm md:text-base font-bold text-[#081C3A]">
@@ -391,34 +391,35 @@ export default function RegistrationConfig() {
           </div>
         </div>
 
-      </div>
+        {/* End of Form: Summary Bar with Dynamic Total & Proceed Button */}
+        <div className="bg-[#081C3A] text-white rounded-2xl p-5 md:p-6 shadow-xl border border-white/10 mt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-start">
+              <div className="bg-white/10 px-4 py-2 rounded-xl border border-white/15">
+                <span className="text-[10px] uppercase tracking-widest text-[var(--color-luxury-gold)] font-bold block">
+                  Order Total
+                </span>
+                <span className="text-lg md:text-2xl font-bold tracking-tight text-white font-mono">
+                  TOTAL: {totalPrice.toFixed(2)} EUR
+                </span>
+              </div>
+              <div className="text-xs text-white/70">
+                <span className="block font-semibold text-white/90">{VESSEL_SIZES.find(s => s.id === vesselClass)?.label}</span>
+                <span className="text-[11px] text-white/60">Polish Flag Registry Package</span>
+              </div>
+            </div>
 
-      {/* Floating / Fixed Bottom Bar with Dynamic Total & Proceed Button */}
-      <div className="fixed bottom-0 inset-x-0 bg-[#081C3A] text-white border-t border-white/10 shadow-2xl py-3.5 px-6 z-40">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-4">
-            <div className="bg-white/10 px-3.5 py-1.5 rounded-lg border border-white/15">
-              <span className="text-[10px] uppercase tracking-widest text-[var(--color-luxury-gold)] font-semibold block">
-                Order Total
-              </span>
-              <span className="text-lg md:text-xl font-bold tracking-tight text-white font-mono">
-                TOTAL: {totalPrice.toFixed(2)} EUR
-              </span>
-            </div>
-            <div className="hidden md:block text-xs text-white/70">
-              <span>{VESSEL_SIZES.find(s => s.id === vesselClass)?.label} • Polish Flag Registry</span>
-            </div>
+            <button
+              type="button"
+              onClick={handleProceed}
+              className="w-full sm:w-auto bg-[var(--color-luxury-gold)] hover:bg-[#b58f3c] text-[#081C3A] font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <span>Proceed to Documentation</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
-
-          <button
-            type="button"
-            onClick={handleProceed}
-            className="w-full sm:w-auto bg-[var(--color-luxury-gold)] hover:bg-[#b58f3c] text-[#081C3A] font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <span>Proceed to Documentation</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
+
       </div>
     </div>
   );
