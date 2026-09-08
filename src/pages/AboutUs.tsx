@@ -94,7 +94,7 @@ export default function AboutUs() {
   return (
     <div className="w-full bg-[#F5F7FA] text-[#081C3A]">
       {/* HERO SECTION */}
-      <section className="relative min-h-[auto] md:min-h-[85vh] flex flex-col md:flex-row items-center pt-24 md:pt-40 pb-12 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
+      <section className="relative min-h-[auto] md:min-h-[85vh] flex flex-col md:flex-row items-center pt-24 md:pt-40 pb-6 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
         {/* Desktop Background Image - Full Bleed Cover */}
         <div className="hidden md:block absolute inset-0 z-0 overflow-hidden">
           <img
@@ -107,18 +107,29 @@ export default function AboutUs() {
           <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#081C3A] via-[#081C3A]/40 to-transparent" />
         </div>
 
-        {/* Mobile Hero View: Full Image completely shown without any cropping */}
-        <div className="md:hidden w-full px-4 pt-2 pb-3 z-10">
+        {/* Mobile Hero View: Full Image completely shown with ONLY the title written in the corner */}
+        <div className="md:hidden w-full px-4 pt-1 pb-4 z-10">
           <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-[#081C3A]">
             <img
               src="/121.jpeg"
               alt="Felix Yacht International"
-              className="w-full h-auto block rounded-2xl brightness-110 contrast-105"
+              className="w-full h-auto block rounded-2xl brightness-105 contrast-105"
             />
+            {/* Subtle luxury gradient in the bottom-left corner for maximum legibility */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#081C3A]/90 via-[#081C3A]/30 to-transparent pointer-events-none" />
+
+            {/* Title written in the corner of the pic */}
+            <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 z-10 pr-3">
+              <h1 className="text-[19px] sm:text-2xl font-heading font-extrabold tracking-tight leading-[1.16] drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] text-white">
+                Empowering Global <br />
+                <span className="text-[var(--color-luxury-gold)]">Maritime Sovereignty</span>
+              </h1>
+            </div>
           </div>
         </div>
 
-        <div className="w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 flex justify-start">
+        {/* Desktop Hero Card Overlay */}
+        <div className="hidden md:flex w-full max-w-[1600px] mx-auto px-4 md:px-10 lg:pl-12 lg:pr-6 relative z-10 justify-start">
           <div className="w-full md:max-w-[440px] bg-[#081C3A]/90 md:bg-[#081C3A]/55 backdrop-blur-md p-5 md:p-6 lg:p-7 rounded-2xl border border-white/20 shadow-2xl mt-4 sm:mt-6 md:mt-36 lg:mt-40 xl:mt-44">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
