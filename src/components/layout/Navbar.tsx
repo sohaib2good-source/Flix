@@ -62,8 +62,9 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-7 text-[10px] font-bold uppercase tracking-wider text-[#081C3A]/90">
             <Link to="/" className="hover:text-[#081C3A] transition-colors">{t('nav.home')}</Link>
             <Link to="/boat-registration" className="hover:text-[#081C3A] transition-colors">{t('nav.registries')}</Link>
-            <Link to="/services" className="hover:text-[#081C3A] transition-colors">{t('nav.services')}</Link>
             <Link to="/pricing" className="hover:text-[#081C3A] transition-colors">{t('nav.pricing')}</Link>
+            <Link to="/services" className="hover:text-[#081C3A] transition-colors">{t('nav.services')}</Link>
+            <Link to="/about" className="hover:text-[#081C3A] transition-colors">{t('nav.about')}</Link>
           </nav>
         </div>
 
@@ -144,6 +145,13 @@ export default function Navbar() {
               {t('nav.registries')}
             </Link>
             <Link 
+              to="/pricing" 
+              onClick={() => setMobileMenu(false)} 
+              className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
+            >
+              {t('nav.pricing')}
+            </Link>
+            <Link 
               to="/services" 
               onClick={() => setMobileMenu(false)} 
               className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
@@ -151,11 +159,11 @@ export default function Navbar() {
               {t('nav.services')}
             </Link>
             <Link 
-              to="/pricing" 
+              to="/about" 
               onClick={() => setMobileMenu(false)} 
               className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
             >
-              {t('nav.pricing')}
+              {t('nav.about')}
             </Link>
             <Link 
               to="/contact" 

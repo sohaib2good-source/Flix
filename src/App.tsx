@@ -5,6 +5,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
 import BoatRegistration from './pages/BoatRegistration';
+import AboutUs from './pages/AboutUs';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CookieConsent from './components/layout/CookieConsent';
@@ -26,6 +27,7 @@ export default function App() {
                   <Route path="/boat-registration" element={<BoatRegistration />} />
                   <Route path="/registries" element={<BoatRegistration />} />
                   <Route path="/form-submit" element={<BoatRegistration />} />
+                  <Route path="/about" element={<AboutUs />} />
                 </Routes>
               </main>
               <Footer />
