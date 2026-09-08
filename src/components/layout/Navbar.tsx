@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../../contexts/LanguageContext';
-import { Globe, Menu, X, Anchor } from 'lucide-react';
+import { Globe, Menu, X } from 'lucide-react';
 import clsx from 'clsx';
 
 const languages = [
@@ -47,12 +47,13 @@ export default function Navbar() {
   return (
     <header className={clsx(
       'fixed top-0 w-full z-50 transition-all duration-300',
-      scrolled ? 'h-14 bg-white/80 backdrop-blur-md border-b border-gray-200 py-0 flex items-center' : 'h-16 bg-transparent py-0 flex items-center'
+      scrolled || mobileMenu ? 'bg-white/95 backdrop-blur-md border-b border-gray-200' : 'bg-transparent'
     )}>
-      <div className="w-full px-6 md:px-12 flex items-center justify-between">
-
-
-        {/* Center: Logo & Nav Links */}
+      <div className={clsx(
+        'w-full px-6 md:px-12 flex items-center justify-between transition-all duration-300',
+        scrolled ? 'h-14' : 'h-16'
+      )}>
+        {/* Left / Center: Logo & Nav Links */}
         <div className="flex items-center gap-10">
           <Link to="/" className="flex flex-col text-[#081C3A]">
             <span className="font-heading font-bold text-2xl tracking-tighter leading-none">FELIX YACHT</span>
@@ -60,10 +61,9 @@ export default function Navbar() {
           </Link>
           <nav className="hidden lg:flex items-center gap-7 text-[10px] font-bold uppercase tracking-wider text-[#081C3A]/90">
             <Link to="/" className="hover:text-[#081C3A] transition-colors">{t('nav.home')}</Link>
-            <Link to="/registries" className="hover:text-[#081C3A] transition-colors">{t('nav.registries')}</Link>
+            <Link to="/boat-registration" className="hover:text-[#081C3A] transition-colors">{t('nav.registries')}</Link>
             <Link to="/services" className="hover:text-[#081C3A] transition-colors">{t('nav.services')}</Link>
             <Link to="/pricing" className="hover:text-[#081C3A] transition-colors">{t('nav.pricing')}</Link>
-            <Link to="/form-submit" className="hover:text-[#081C3A] transition-colors">Form Submit</Link>
           </nav>
         </div>
 
@@ -110,11 +110,63 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button className="lg:hidden text-[#081C3A]" onClick={() => setMobileMenu(!mobileMenu)}>
+          <button 
+            className="lg:hidden text-[#081C3A] p-1" 
+            onClick={() => setMobileMenu(!mobileMenu)}
+            aria-label="Toggle navigation menu"
+          >
             {mobileMenu ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
+
+      {/* Mobile Drawer Navigation */}
+      <AnimatePresence>
+        {mobileMenu && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-white/98 backdrop-blur-md border-b border-gray-200 px-6 py-5 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider text-[#081C3A]"
+          >
+            <Link 
+              to="/" 
+              onClick={() => setMobileMenu(false)} 
+              className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
+            >
+              {t('nav.home')}
+            </Link>
+            <Link 
+              to="/boat-registration" 
+              onClick={() => setMobileMenu(false)} 
+              className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
+            >
+              {t('nav.registries')}
+            </Link>
+            <Link 
+              to="/services" 
+              onClick={() => setMobileMenu(false)} 
+              className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
+            >
+              {t('nav.services')}
+            </Link>
+            <Link 
+              to="/pricing" 
+              onClick={() => setMobileMenu(false)} 
+              className="py-2 hover:text-[var(--color-luxury-gold)] transition-colors border-b border-gray-100"
+            >
+              {t('nav.pricing')}
+            </Link>
+            <Link 
+              to="/contact" 
+              onClick={() => setMobileMenu(false)} 
+              className="w-full text-center py-3 border border-[#081C3A] rounded-xl text-[#081C3A] hover:bg-[#081C3A] hover:text-white transition-all mt-2"
+            >
+              {t('btn.quote')}
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

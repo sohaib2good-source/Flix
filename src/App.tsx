@@ -4,7 +4,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Admin from './pages/Admin';
-import FormSubmit from './pages/FormSubmit';
+import BoatRegistration from './pages/BoatRegistration';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CookieConsent from './components/layout/CookieConsent';
@@ -23,7 +23,9 @@ export default function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/admin/*" element={<Admin />} />
-                  <Route path="/form-submit" element={<FormSubmit />} />
+                  <Route path="/boat-registration" element={<BoatRegistration />} />
+                  <Route path="/registries" element={<BoatRegistration />} />
+                  <Route path="/form-submit" element={<BoatRegistration />} />
                 </Routes>
               </main>
               <Footer />
@@ -35,4 +37,3 @@ export default function App() {
     </QueryClientProvider>
   );
 }
-
