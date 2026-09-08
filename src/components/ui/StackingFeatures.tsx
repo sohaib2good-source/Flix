@@ -62,72 +62,75 @@ const Card = ({
   image,
   progress,
 }: CardProps) => {
-  // Pacing: 5 cards. Last card (i=4) fully settles at 0.72, giving a generous buffer before next section
-  const enterStart = i === 0 ? 0 : (i - 1) * 0.18 + 0.08;
-  const enterEnd = i === 0 ? 0 : i * 0.18;
+  // Pacing:
+  // Card 0: already in position
+  // Card 1: enters 0.10 -> 0.23
+  // Card 2: enters 0.23 -> 0.36
+  // Card 3: enters 0.36 -> 0.49
+  // Card 4 (LAST TILE: Concierge Support): enters 0.49 -> 0.62
+  // Generous settling buffer: from 0.62 to 1.0 (38% of total scroll distance),
+  // Card 4 stays completely settled, visible, and stacked on top of the deck!
+  const enterStart = i === 0 ? 0 : 0.10 + (i - 1) * 0.13;
+  const enterEnd = i === 0 ? 0 : 0.10 + i * 0.13;
 
   const entryY = useTransform(
     progress,
     [enterStart, Math.max(enterStart + 0.02, enterEnd)],
-    [i === 0 ? '0%' : '100%', '0%']
+    [i === 0 ? '0%' : '100vh', '0%']
   );
 
-  const scaleStart = Math.max(0, (i * 0.18) + 0.04);
-  const scaleEnd = 0.72;
-  const targetScale = 1 - (total - 1 - i) * 0.035;
-
+  // Scaling: cards underneath scale down gently as cards stack on top
+  const targetScale = 1 - (total - 1 - i) * 0.03;
   const scale = useTransform(
     progress,
-    [scaleStart, Math.max(scaleStart + 0.08, scaleEnd)],
+    [enterEnd, Math.min(enterEnd + 0.35, 0.65)],
     [1, i === total - 1 ? 1 : targetScale]
   );
 
   return (
-    <div className="h-screen w-full flex items-center justify-center sticky top-0 px-4 pointer-events-none">
-      <motion.div
-        style={{
-          scale,
-          y: i === 0 ? 0 : entryY,
-          top: `calc(13vh + ${i * 14}px)`,
-        }}
-        className="pointer-events-auto flex flex-col relative w-[88%] md:w-[70%] max-w-sm sm:max-w-md md:max-w-3xl h-[365px] sm:h-[350px] md:h-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-gray-100/90 origin-top bg-white"
-      >
-        <div className="flex flex-col md:flex-row w-full h-full bg-white">
-          {/* Content Side */}
-          <div className="order-2 md:order-1 w-full md:w-1/2 p-5 sm:p-6 md:p-10 flex flex-col justify-center relative bg-white z-10 flex-1">
-            <div
-              className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-10 pointer-events-none"
-              style={{ backgroundColor: color }}
-            />
+    <motion.div
+      style={{
+        scale,
+        y: i === 0 ? 0 : entryY,
+        top: `calc(8px + ${i * 13}px)`,
+      }}
+      className="absolute pointer-events-auto w-[90%] md:w-[70%] max-w-sm sm:max-w-md md:max-w-3xl h-[345px] sm:h-[330px] md:h-[310px] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.22)] border border-gray-100/90 origin-top bg-white"
+    >
+      <div className="flex flex-col md:flex-row w-full h-full bg-white">
+        {/* Content Side */}
+        <div className="order-2 md:order-1 w-full md:w-1/2 p-5 sm:p-6 md:p-8 flex flex-col justify-center relative bg-white z-10 flex-1">
+          <div
+            className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-10 pointer-events-none"
+            style={{ backgroundColor: color }}
+          />
 
-            <div
-              className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center mb-2.5 md:mb-5 shadow-sm text-white shrink-0"
-              style={{ backgroundColor: color }}
-            >
-              <Icon className="w-5 h-5 md:w-6 md:h-6" />
-            </div>
-
-            <h3 className="text-lg sm:text-xl md:text-3xl font-heading font-bold text-[#081C3A] mb-1.5 md:mb-3 leading-tight">
-              {title}
-            </h3>
-
-            <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none">
-              {description}
-            </p>
+          <div
+            className="w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center mb-2.5 md:mb-4 shadow-sm text-white shrink-0"
+            style={{ backgroundColor: color }}
+          >
+            <Icon className="w-5 h-5" />
           </div>
 
-          {/* Image Side */}
-          <div className="order-1 md:order-2 w-full md:w-1/2 h-36 sm:h-40 md:h-full relative overflow-hidden bg-gray-100 shrink-0">
-            <div className="absolute inset-0 bg-black/5 z-10" />
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <h3 className="text-base sm:text-lg md:text-2xl font-heading font-bold text-[#081C3A] mb-1.5 md:mb-2 leading-tight">
+            {title}
+          </h3>
+
+          <p className="text-gray-500 text-xs sm:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">
+            {description}
+          </p>
         </div>
-      </motion.div>
-    </div>
+
+        {/* Image Side */}
+        <div className="order-1 md:order-2 w-full md:w-1/2 h-32 sm:h-36 md:h-full relative overflow-hidden bg-gray-100 shrink-0">
+          <div className="absolute inset-0 bg-black/5 z-10" />
+          <img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </motion.div>
   );
 };
 
@@ -139,28 +142,30 @@ export default function StackingFeatures() {
   });
 
   return (
-    <section className="bg-[var(--color-background)] relative">
-      {/* Title Header */}
-      <div className="pb-8 pt-8 md:pt-14 text-center sticky top-14 md:top-16 z-0 pointer-events-none px-4">
-        <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-2">
-          Why Choose Felix Yacht
-        </h2>
-        <p className="text-gray-500 max-w-xl mx-auto text-xs sm:text-sm md:text-base">
-          Experience seamless international yacht registration with our premium services.
-        </p>
-      </div>
+    <section ref={containerRef} className="bg-[var(--color-background)] relative" style={{ height: '320vh' }}>
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-start overflow-hidden pointer-events-none pt-16 md:pt-20">
+        {/* Title Header */}
+        <div className="text-center px-4 mb-2 md:mb-4 pointer-events-auto shrink-0">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-1 md:mb-2">
+            Why Choose Felix Yacht
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto text-xs sm:text-sm md:text-base">
+            Experience seamless international yacht registration with our premium services.
+          </p>
+        </div>
 
-      {/* Stacking Cards Container - 400vh provides smooth scroll pacing for all 5 cards */}
-      <div ref={containerRef} className="relative z-10" style={{ height: '400vh' }}>
-        {features.map((feature, i) => (
-          <Card
-            key={i}
-            i={i}
-            total={features.length}
-            {...feature}
-            progress={scrollYProgress}
-          />
-        ))}
+        {/* Cards Stacking Area */}
+        <div className="relative w-full flex-1 flex justify-center items-start">
+          {features.map((feature, i) => (
+            <Card
+              key={i}
+              i={i}
+              total={features.length}
+              {...feature}
+              progress={scrollYProgress}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
