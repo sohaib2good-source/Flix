@@ -62,24 +62,24 @@ const Card = ({
   image,
   progress,
 }: CardProps) => {
-  // Pacing calculations: 5 cards with smooth sequential entry and progressive scale down
-  const enterStart = i === 0 ? 0 : (i - 1) * 0.18 + 0.04;
+  // Pacing: 5 cards. Last card (i=4) fully settles at 0.72, giving a generous buffer before next section
+  const enterStart = i === 0 ? 0 : (i - 1) * 0.18 + 0.08;
   const enterEnd = i === 0 ? 0 : i * 0.18;
 
   const entryY = useTransform(
     progress,
-    [enterStart, Math.max(enterStart + 0.01, enterEnd)],
+    [enterStart, Math.max(enterStart + 0.02, enterEnd)],
     [i === 0 ? '0%' : '100%', '0%']
   );
 
-  const scaleStart = i * 0.18;
-  const scaleEnd = 0.85;
+  const scaleStart = Math.max(0, (i * 0.18) + 0.04);
+  const scaleEnd = 0.72;
   const targetScale = 1 - (total - 1 - i) * 0.035;
 
   const scale = useTransform(
     progress,
-    [scaleStart, Math.max(scaleStart + 0.1, scaleEnd)],
-    [1, targetScale]
+    [scaleStart, Math.max(scaleStart + 0.08, scaleEnd)],
+    [1, i === total - 1 ? 1 : targetScale]
   );
 
   return (
@@ -88,11 +88,12 @@ const Card = ({
         style={{
           scale,
           y: i === 0 ? 0 : entryY,
+          top: `calc(13vh + ${i * 14}px)`,
         }}
-        className="pointer-events-auto flex flex-col relative w-full max-w-[340px] sm:max-w-md md:max-w-3xl rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-gray-100/80 origin-top bg-white"
+        className="pointer-events-auto flex flex-col relative w-[88%] md:w-[70%] max-w-sm sm:max-w-md md:max-w-3xl h-[365px] sm:h-[350px] md:h-[320px] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-gray-100/90 origin-top bg-white"
       >
-        <div className="flex flex-col md:flex-row w-full h-[370px] sm:h-[390px] md:h-[320px] bg-white">
-          {/* Text Content */}
+        <div className="flex flex-col md:flex-row w-full h-full bg-white">
+          {/* Content Side */}
           <div className="order-2 md:order-1 w-full md:w-1/2 p-5 sm:p-6 md:p-10 flex flex-col justify-center relative bg-white z-10 flex-1">
             <div
               className="absolute top-0 right-0 w-24 h-24 rounded-full blur-2xl opacity-10 pointer-events-none"
@@ -106,7 +107,7 @@ const Card = ({
               <Icon className="w-5 h-5 md:w-6 md:h-6" />
             </div>
 
-            <h3 className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-[#081C3A] mb-1.5 md:mb-3 leading-tight">
+            <h3 className="text-lg sm:text-xl md:text-3xl font-heading font-bold text-[#081C3A] mb-1.5 md:mb-3 leading-tight">
               {title}
             </h3>
 
@@ -115,8 +116,8 @@ const Card = ({
             </p>
           </div>
 
-          {/* Image */}
-          <div className="order-1 md:order-2 w-full md:w-1/2 h-40 sm:h-44 md:h-full relative overflow-hidden bg-gray-100 shrink-0">
+          {/* Image Side */}
+          <div className="order-1 md:order-2 w-full md:w-1/2 h-36 sm:h-40 md:h-full relative overflow-hidden bg-gray-100 shrink-0">
             <div className="absolute inset-0 bg-black/5 z-10" />
             <img
               src={image}
@@ -139,9 +140,9 @@ export default function StackingFeatures() {
 
   return (
     <section className="bg-[var(--color-background)] relative">
-      {/* Title Header - Sticks cleanly at top as cards scroll over */}
-      <div className="pb-8 pt-8 md:pt-12 text-center sticky top-14 md:top-16 z-0 pointer-events-none px-4">
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-2">
+      {/* Title Header */}
+      <div className="pb-8 pt-8 md:pt-14 text-center sticky top-14 md:top-16 z-0 pointer-events-none px-4">
+        <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-2">
           Why Choose Felix Yacht
         </h2>
         <p className="text-gray-500 max-w-xl mx-auto text-xs sm:text-sm md:text-base">
@@ -149,8 +150,8 @@ export default function StackingFeatures() {
         </p>
       </div>
 
-      {/* Stacking Cards Container */}
-      <div ref={containerRef} className="relative z-10" style={{ height: '320vh' }}>
+      {/* Stacking Cards Container - 400vh provides smooth scroll pacing for all 5 cards */}
+      <div ref={containerRef} className="relative z-10" style={{ height: '400vh' }}>
         {features.map((feature, i) => (
           <Card
             key={i}

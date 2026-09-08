@@ -151,7 +151,7 @@ export default function Home() {
       <StackingFeatures />
 
       {/* HOW IT WORKS */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-4">How It Works</h2>
