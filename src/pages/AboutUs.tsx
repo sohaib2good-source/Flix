@@ -151,12 +151,6 @@ export default function AboutUs() {
                 <span>Register Vessel Now</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link
-                to="/pricing"
-                className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white font-bold text-xs uppercase tracking-widest rounded-xl border border-white/25 transition-all backdrop-blur-md inline-flex items-center gap-2"
-              >
-                <span>Compare Registries</span>
-              </Link>
             </motion.div>
           </div>
         </div>
@@ -369,12 +363,6 @@ export default function AboutUs() {
             >
               <span>Apply for Boat Registration</span>
               <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/pricing"
-              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-widest rounded-xl border border-white/20 transition-all backdrop-blur-sm"
-            >
-              <span>View Registry Comparison</span>
             </Link>
           </div>
         </div>
