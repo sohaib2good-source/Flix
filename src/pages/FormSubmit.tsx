@@ -59,7 +59,6 @@ export default function FormSubmit() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitting yacht registration:", formData);
     alert("Form submitted successfully!");
   };
 

@@ -64,10 +64,6 @@ export default function Navbar() {
             <Link to="/services" className="hover:text-[#081C3A] transition-colors">{t('nav.services')}</Link>
             <Link to="/pricing" className="hover:text-[#081C3A] transition-colors">{t('nav.pricing')}</Link>
             <Link to="/form-submit" className="hover:text-[#081C3A] transition-colors">Form Submit</Link>
-            <Link to="/ai-tools" className="hover:text-[var(--color-luxury-gold)] transition-colors text-[var(--color-luxury-gold)]/80 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-luxury-gold)] animate-pulse" />
-              AI Tools
-            </Link>
           </nav>
         </div>
 

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'motion/react';
 import { Shield, Clock, Globe2, FileCheck, CheckCircle2 } from 'lucide-react';
 
@@ -41,6 +41,7 @@ const features = [
 ];
 
 interface CardProps {
+  key?: React.Key;
   i: number;
   title: string;
   description: string;

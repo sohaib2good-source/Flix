@@ -1,20 +1,57 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Felix Yacht - International Yacht Registration Platform
 
-# Run and deploy your AI Studio app
+A full-stack web application for global yacht and vessel registrations, flag administration, client instant quotes, and administrative document processing.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/3b2f5c6c-c0d4-437b-904c-83a03c843a4e
+- **Global Registry Services:** Multi-jurisdiction flag registration (Poland, San Marino, Delaware, UK Part 1, Seychelles, Langkawi, etc.).
+- **Interactive Registration Engine:** Real-time quote calculators, dynamic fee breakdowns, and qualification checkers.
+- **Multilingual Support:** Localized international experience across European and global languages.
+- **Client Form Submission:** Structured digital intake forms for boat owners, operators, and vessel specifications.
+- **Administrative Portal:** Secure dashboard for client quotes, registration status tracking, revenue management, customer reviews CMS, and Word document generator (.docx) integration.
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- **Frontend:** React 19, TypeScript, Vite, Tailwind CSS v4, Motion
+- **State & Data:** TanStack Query, React Router v7, React Hook Form, Zod
+- **Backend:** Node.js, Express, TSX
+- **Database & Auth:** Firebase / Firestore
+- **Document Generation:** docxtemplater, pizzip
 
+## Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone or extract the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure environment variables (optional for local dev):
+   ```bash
+   cp .env.example .env
+   ```
+
+### Development
+
+To run the application locally:
+```bash
+npm run dev
+```
+The server will start at `http://localhost:3006`.
+
+### Production Build
+
+To build the project for production:
+```bash
+npm run build
+```
+To run the production server:
+```bash
+npm run start
+```

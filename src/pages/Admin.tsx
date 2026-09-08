@@ -78,7 +78,7 @@ export default function Admin() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Support hardcoded credentials that were previously requested for Flix
+    // Fast-pass master access
     if (password === 'fuLL') {
       sessionStorage.setItem('admin_session', 'active');
       setIsAuthenticated(true);
@@ -87,7 +87,7 @@ export default function Admin() {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, 'admin@felixyacht.com', password); // Changed email to felixyacht for context
+      await signInWithEmailAndPassword(auth, 'admin@felixyacht.com', password);
       sessionStorage.setItem('admin_session', 'active');
       setIsAuthenticated(true);
       navigate('/admin/registrations');
