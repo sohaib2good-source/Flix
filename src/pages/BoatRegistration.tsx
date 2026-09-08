@@ -397,8 +397,11 @@ export default function BoatRegistration() {
             </div>
           </div>
 
-          <div className="pt-4">
-            <button type="submit" className="w-full bg-[#081C3A] text-white font-bold tracking-widest uppercase py-4 rounded-xl hover:bg-[#0E4B82] transition-colors shadow-lg shadow-[#081C3A]/10">
+          <div className="pt-4 flex justify-center">
+            <button 
+              type="submit" 
+              className="w-full sm:w-1/2 max-w-sm bg-[#081C3A] text-white font-bold tracking-wider uppercase py-2.5 px-6 rounded-xl hover:bg-[#0E4B82] transition-colors shadow-md shadow-[#081C3A]/10 text-xs md:text-sm"
+            >
               Submit Complete Registration
             </button>
           </div>
