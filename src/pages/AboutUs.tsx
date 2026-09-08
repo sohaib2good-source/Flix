@@ -94,10 +94,17 @@ export default function AboutUs() {
   return (
     <div className="w-full bg-[#F5F7FA] text-[#081C3A]">
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-[#081C3A] via-[#0E4B82] to-[#081C3A] text-white overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[var(--color-luxury-gold)]/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#0E4B82]/30 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 text-white overflow-hidden bg-[#081C3A]">
+        {/* Background Image with Luxury Navy Gradient Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/121.png"
+            alt="Felix Yacht International"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#081C3A]/95 via-[#081C3A]/80 to-[#081C3A]/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#081C3A] via-transparent to-[#081C3A]/50" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
