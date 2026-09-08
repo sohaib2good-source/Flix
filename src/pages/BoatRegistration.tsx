@@ -69,8 +69,37 @@ export default function BoatRegistration() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const value = e.target.type === 'checkbox' ? (e.target as HTMLInputElement).checked : e.target.value;
-    setFormData({ ...formData, [e.target.name]: value });
+    const { name, value, type } = e.target;
+    if (type === 'checkbox') {
+      setFormData((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }));
+      return;
+    }
+
+    // Strictly enforce numeric-only with optional decimal point for boatLength
+    if (name === 'boatLength') {
+      const filtered = value.replace(/[^0-9.]/g, '');
+      const parts = filtered.split('.');
+      const clean = parts.length > 2 ? `${parts[0]}.${parts.slice(1).join('')}` : filtered;
+      setFormData((prev) => ({ ...prev, [name]: clean }));
+      return;
+    }
+
+    // Strictly enforce numeric integers for maxPassengers and date of birth fields
+    if (
+      name === 'maxPassengers' || 
+      name === 'dobDay' || 
+      name === 'dobMonth' || 
+      name === 'dobYear' || 
+      name === 'owner2DobDay' || 
+      name === 'owner2DobMonth' || 
+      name === 'owner2DobYear'
+    ) {
+      const clean = value.replace(/\D/g, '');
+      setFormData((prev) => ({ ...prev, [name]: clean }));
+      return;
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -270,11 +299,61 @@ export default function BoatRegistration() {
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Boat Length (m)</label>
-                <input type="text" name="boatLength" value={formData.boatLength} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm" />
+                <input 
+                  type="text" 
+                  inputMode="decimal"
+                  name="boatLength" 
+                  value={formData.boatLength} 
+                  onChange={handleChange} 
+                  onKeyDown={(e) => {
+                    // Allow navigation, deletion, copy/paste, select all
+                    if (
+                      ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key) ||
+                      ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase()))
+                    ) {
+                      return;
+                    }
+                    // Allow digits 0-9
+                    if (/^[0-9]$/.test(e.key)) {
+                      return;
+                    }
+                    // Allow single decimal point
+                    if (e.key === '.' && !formData.boatLength.includes('.')) {
+                      return;
+                    }
+                    // Prevent any non-numeric key press
+                    e.preventDefault();
+                  }}
+                  placeholder="e.g. 12.5" 
+                  className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#081C3A]/20" 
+                />
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Max Passengers</label>
-                <input type="text" name="maxPassengers" value={formData.maxPassengers} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm" />
+                <input 
+                  type="text" 
+                  inputMode="numeric"
+                  name="maxPassengers" 
+                  value={formData.maxPassengers} 
+                  onChange={handleChange} 
+                  onKeyDown={(e) => {
+                    // Allow navigation, deletion, copy/paste, select all
+                    if (
+                      ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key) ||
+                      ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x'].includes(e.key.toLowerCase()))
+                    ) {
+                      return;
+                    }
+                    // Allow digits 0-9
+                    if (/^[0-9]$/.test(e.key)) {
+                      return;
+                    }
+                    // Prevent any non-numeric key press
+                    e.preventDefault();
+                  }}
+                  placeholder="e.g. 8" 
+                  className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#081C3A]/20" 
+                />
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Port of Choice</label>
