@@ -94,25 +94,26 @@ export default function AboutUs() {
   return (
     <div className="w-full bg-[#F5F7FA] text-[#081C3A]">
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 text-white overflow-hidden bg-[#081C3A]">
-        {/* Background Image with Luxury Navy Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-[85vh] flex items-center pt-32 pb-24 md:pt-40 md:pb-32 text-white overflow-hidden bg-[#081C3A]">
+        {/* Background Image - Enlarged, Bright, Full Edge-to-Edge Cover */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <img
             src="/121.png"
             alt="Felix Yacht International"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center scale-110 md:scale-115 transform-gpu brightness-115 contrast-105 transition-transform duration-1000"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#081C3A]/95 via-[#081C3A]/80 to-[#081C3A]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#081C3A] via-transparent to-[#081C3A]/50" />
+          {/* Subtle translucent gradient to keep image bright and vibrant while blending cleanly */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#081C3A]/70 via-[#081C3A]/30 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#081C3A] via-[#081C3A]/40 to-transparent" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+          <div className="max-w-3xl bg-[#081C3A]/45 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/20 shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[var(--color-luxury-gold)] text-xs font-semibold tracking-wider uppercase mb-6"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-[var(--color-luxury-gold)] text-xs font-semibold tracking-wider uppercase mb-6"
             >
               <Anchor className="w-3.5 h-3.5" />
               <span>International Vessel Documentation</span>
@@ -122,7 +123,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight leading-[1.15] mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight leading-[1.15] mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]"
             >
               Empowering Global <br />
               <span className="text-[var(--color-luxury-gold)]">Maritime Sovereignty</span>
@@ -132,7 +133,7 @@ export default function AboutUs() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mb-10"
+              className="text-base md:text-lg text-white/95 leading-relaxed max-w-2xl mb-10 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]"
             >
               For over a decade, Felix Yacht has stood as the premier international authority in yacht registration, flag state compliance, and maritime legal advisory—enabling owners, brokers, and captains to sail worldwide with total legal security.
             </motion.p>
@@ -152,7 +153,7 @@ export default function AboutUs() {
               </Link>
               <Link
                 to="/pricing"
-                className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-widest rounded-xl border border-white/20 transition-all backdrop-blur-sm inline-flex items-center gap-2"
+                className="px-8 py-4 bg-white/15 hover:bg-white/25 text-white font-bold text-xs uppercase tracking-widest rounded-xl border border-white/25 transition-all backdrop-blur-md inline-flex items-center gap-2"
               >
                 <span>Compare Registries</span>
               </Link>
