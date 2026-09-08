@@ -278,7 +278,28 @@ export default function BoatRegistration() {
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Port of Choice</label>
-                <input type="text" name="portOfChoice" value={formData.portOfChoice} onChange={handleChange} className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm" />
+                <select 
+                  name="portOfChoice" 
+                  value={formData.portOfChoice} 
+                  onChange={handleChange} 
+                  className="w-full p-2.5 bg-white border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none"
+                >
+                  <option value="">Select Port...</option>
+                  <option value="GDANSK">GDANSK</option>
+                  <option value="Gdynia">Gdynia</option>
+                  <option value="Świnoujście">Świnoujście</option>
+                  <option value="Szczecin">Szczecin</option>
+                  <option value="Kołobrzeg">Kołobrzeg</option>
+                  <option value="Sopot">Sopot</option>
+                  <option value="Wolin">Wolin</option>
+                  <option value="Hel">Hel</option>
+                  <option value="Jastarnia">Jastarnia</option>
+                  <option value="Darłowo">Darłowo</option>
+                  <option value="Dąbki">Dąbki</option>
+                  <option value="Krynica Morska">Krynica Morska</option>
+                  <option value="Dziwnów">Dziwnów</option>
+                  <option value="Chałupy">Chałupy</option>
+                </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Boat Category</label>
