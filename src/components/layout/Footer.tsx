@@ -29,9 +29,16 @@ export default function Footer() {
           
           {/* Brand */}
           <div className="space-y-6">
-            <Link to="/" className="flex items-center gap-2 text-white">
-              <Anchor className="w-8 h-8 text-[var(--color-luxury-gold)]" />
-              <span className="font-heading font-bold text-2xl tracking-tight">FELIX YACHT</span>
+            <Link to="/" className="flex items-center gap-2.5 text-white group">
+              <img 
+                src="/logo-white.png" 
+                alt="Felix Yacht" 
+                className="h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+              />
+              <div className="flex flex-col">
+                <span className="font-heading font-bold text-xl md:text-2xl tracking-tight leading-none">FELIX YACHT</span>
+                <span className="text-[8px] md:text-[9px] tracking-[0.25em] uppercase text-white/60 ml-0.5 mt-0.5">International Registrations</span>
+              </div>
             </Link>
             <p className="text-sm leading-relaxed">
               International Yacht Registration Specialists. Fast, secure, and legally compliant services for global yacht owners.

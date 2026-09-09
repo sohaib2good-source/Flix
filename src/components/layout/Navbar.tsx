@@ -55,9 +55,16 @@ export default function Navbar() {
       )}>
         {/* Left / Center: Logo & Nav Links */}
         <div className="flex items-center gap-10">
-          <Link to="/" className="flex flex-col text-[#081C3A]">
-            <span className="font-heading font-bold text-2xl tracking-tighter leading-none">FELIX YACHT</span>
-            <span className="text-[9px] tracking-[0.3em] uppercase opacity-60 ml-0.5">International Registrations</span>
+          <Link to="/" className="flex items-center gap-2.5 text-[#081C3A] group">
+            <img 
+              src="/logo.png" 
+              alt="Felix Yacht" 
+              className="h-8 md:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            />
+            <div className="flex flex-col">
+              <span className="font-heading font-bold text-xl md:text-2xl tracking-tighter leading-none">FELIX YACHT</span>
+              <span className="text-[8px] md:text-[9px] tracking-[0.28em] uppercase opacity-60 ml-0.5">International Registrations</span>
+            </div>
           </Link>
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-[12px] font-bold uppercase tracking-wider text-[#081C3A]">
             <Link to="/" className="hover:text-[var(--color-ocean-blue)] transition-colors">{t('nav.home')}</Link>

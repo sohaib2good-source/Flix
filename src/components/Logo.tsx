@@ -12,16 +12,14 @@ interface LogoProps {
  * Handles transparency and color variants.
  */
 export default function Logo({ className, variant = 'light' }: LogoProps) {
-  // variant 'light' -> Default transparent logo (navy text)
-  // variant 'white' -> Force white logo (for dark backgrounds)
+  const src = variant === 'white' ? '/logo-white.png' : '/logo.png';
   
   return (
     <img 
-      src="/images/official_logo.png" 
-      alt="Ocean Yacht Registration" 
+      src={src} 
+      alt="Felix Yacht Registration" 
       className={cn(
-        "object-contain transition-all duration-500 hover:scale-105",
-        variant === 'white' && "drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]",
+        "object-contain transition-all duration-300 hover:scale-105",
         className
       )}
       style={{
