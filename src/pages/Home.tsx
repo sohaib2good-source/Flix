@@ -91,10 +91,10 @@ export default function Home() {
               {t('hero.subtitle')}
             </p>
             <div className="flex items-center justify-center gap-3 w-full">
-              <Link to="/register" className="flex-1 bg-white text-[#081C3A] py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
+              <Link to="/boat-registration" className="flex-1 bg-white text-[#081C3A] py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
                 {t('btn.register')}
               </Link>
-              <Link to="/quote" className="flex-1 border border-white/30 text-white py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded backdrop-blur-md hover:bg-white/10 transition-all text-center">
+              <Link to="/boat-registration" className="flex-1 border border-white/30 text-white py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded backdrop-blur-md hover:bg-white/10 transition-all text-center">
                 {t('btn.quote')}
               </Link>
             </div>

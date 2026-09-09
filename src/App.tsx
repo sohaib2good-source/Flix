@@ -28,6 +28,8 @@ export default function App() {
                   {/* Step 1: Vessel & Service Configuration */}
                   <Route path="/boat-registration" element={<RegistrationConfig />} />
                   <Route path="/registries" element={<RegistrationConfig />} />
+                  <Route path="/register" element={<RegistrationConfig />} />
+                  <Route path="/quote" element={<RegistrationConfig />} />
                   {/* Step 2: Documentation Form */}
                   <Route path="/boat-documentation" element={<BoatRegistration />} />
                   <Route path="/boat-registration/documentation" element={<BoatRegistration />} />
