@@ -10,6 +10,7 @@ import AboutUs from './pages/AboutUs';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CookieConsent from './components/layout/CookieConsent';
+import ScrollToTop from './components/common/ScrollToTop';
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ export default function App() {
       <AuthProvider>
         <LanguageProvider>
           <BrowserRouter>
+            <ScrollToTop />
             <div className="min-h-screen flex flex-col font-sans">
               <Navbar />
               <main className="flex-grow">
