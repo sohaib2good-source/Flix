@@ -55,34 +55,46 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative flex items-start justify-center overflow-hidden pb-16">
-        {/* Video Background Fallback / Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#081C3A] via-[#0E4B82] to-[#142D52] z-0">
-          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, white 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-[#F5F7FA] to-transparent" />
+      <section className="relative flex items-start overflow-hidden pb-16 pt-6 min-h-[580px]">
+        {/* Bright Background Image - Main Boat */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/main-boat.png"
+            alt="Felix Yacht - Luxury Yacht"
+            className="w-full h-full object-cover object-[65%_center] md:object-[60%_center] brightness-105 saturate-115"
+          />
+          {/* Subtle luminous overlay to keep colors bright while preserving elegance */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#081C3A]/20 via-transparent to-[#F5F7FA]/70 pointer-events-none" />
+          <div 
+            className="absolute inset-0 opacity-15 pointer-events-none" 
+            style={{ 
+              backgroundImage: 'radial-gradient(circle at 50% 50%, white 1px, transparent 1px)', 
+              backgroundSize: '40px 40px' 
+            }} 
+          />
         </div>
 
-        <div className="relative z-10 w-full flex flex-col items-center justify-start h-full px-6 text-center pt-10">
+        <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 flex flex-col items-start justify-start pt-6 md:pt-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-white/5 backdrop-blur-xl border border-white/20 p-8 md:p-10 rounded-2xl shadow-2xl max-w-xl text-center w-full mx-auto"
+            className="bg-[#081C3A]/75 backdrop-blur-xl border border-white/20 p-6 md:p-7 rounded-2xl shadow-2xl max-w-[400px] text-center w-full"
           >
-            <div className="inline-block px-4 py-1.5 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-4">
               Global Flag Specialists
             </div>
-            <h1 className="text-5xl font-light text-white mb-6 leading-tight">
+            <h1 className="text-3xl md:text-[34px] font-light text-white mb-4 leading-tight">
               Register Your Yacht <br /><span className="font-bold">Anywhere in the World</span>
             </h1>
-            <p className="text-white/70 text-lg font-light mb-10 leading-relaxed max-w-lg mx-auto">
+            <p className="text-white/80 text-xs md:text-sm font-light mb-6 leading-relaxed">
               {t('hero.subtitle')}
             </p>
-            <div className="flex items-center justify-center space-x-6">
-              <Link to="/register" className="bg-white text-[#081C3A] px-10 py-4 font-bold uppercase text-xs tracking-widest rounded shadow-xl hover:bg-[#F5F7FA] transition-all">
+            <div className="flex items-center justify-center gap-3 w-full">
+              <Link to="/register" className="flex-1 bg-white text-[#081C3A] py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
                 {t('btn.register')}
               </Link>
-              <Link to="/quote" className="border border-white/30 text-white px-10 py-4 font-bold uppercase text-xs tracking-widest rounded backdrop-blur-md hover:bg-white/10 transition-all">
+              <Link to="/quote" className="flex-1 border border-white/30 text-white py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded backdrop-blur-md hover:bg-white/10 transition-all text-center">
                 {t('btn.quote')}
               </Link>
             </div>
@@ -92,7 +104,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-8 flex items-center justify-center space-x-2 text-white/50 text-[11px] uppercase tracking-widest font-semibold"
+            className="mt-4 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/15 text-white/90 text-[10px] uppercase tracking-widest font-semibold shadow-lg"
           >
             <span className="text-[var(--color-luxury-gold)]">★★★★★</span>
             <span>Trusted by 25,000+ Owners Worldwide</span>
