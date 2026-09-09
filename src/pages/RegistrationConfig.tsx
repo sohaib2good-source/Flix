@@ -20,11 +20,11 @@ const VESSEL_SIZES = [
 ] as const;
 
 const SERVICE_TYPES = [
-  { id: 'new_flag', label: 'New Flag Registration (Included with Base Price)', price: 0, priceStr: '0.00 EUR' },
-  { id: 'change_owner', label: 'Change of Ownership (350.00 EUR)', price: 350, priceStr: '+350.00 EUR' },
-  { id: 'modification', label: 'Modification Polish Reg (249.00 EUR)', price: 249, priceStr: '+249.00 EUR' },
-  { id: 'deletion', label: 'Polish Deletion Certificate (249.00 EUR)', price: 249, priceStr: '+249.00 EUR' },
-  { id: 'duplicate', label: 'Duplicate Polish Registration (249.00 EUR)', price: 249, priceStr: '+249.00 EUR' },
+  { id: 'new_flag', label: 'New Flag Registration', price: 0, priceStr: '0.00 EUR' },
+  { id: 'change_owner', label: 'Change of Ownership', price: 350, priceStr: '+350.00 EUR' },
+  { id: 'modification', label: 'Modification Polish Reg', price: 249, priceStr: '+249.00 EUR' },
+  { id: 'deletion', label: 'Polish Deletion Certificate', price: 249, priceStr: '+249.00 EUR' },
+  { id: 'duplicate', label: 'Duplicate Polish Registration', price: 249, priceStr: '+249.00 EUR' },
 ] as const;
 
 const USAGE_INTENTS = [
@@ -45,8 +45,8 @@ const SPEED_OPTIONS = [
 ] as const;
 
 const SHIPPING_OPTIONS = [
-  { id: 'standard', label: 'Standard Registered Mail (15.00 EUR)', price: 15, priceStr: '15.00 EUR' },
-  { id: 'dhl', label: 'DHL Express International Courier (50.00 EUR)', price: 50, priceStr: '50.00 EUR' },
+  { id: 'standard', label: 'Standard Registered Mail', price: 15, priceStr: '15.00 EUR' },
+  { id: 'dhl', label: 'DHL Express International Courier', price: 50, priceStr: '50.00 EUR' },
 ] as const;
 
 export default function RegistrationConfig() {
