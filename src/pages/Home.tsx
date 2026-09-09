@@ -55,16 +55,16 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative flex items-start overflow-hidden pb-16 pt-6 min-h-[580px]">
+      <section className="relative flex items-start overflow-hidden pb-14 pt-4 md:pb-16 md:pt-6 min-h-[620px] md:min-h-[580px]">
         {/* Bright Background Image - Main Boat */}
         <div className="absolute inset-0 z-0">
           <img
             src="/main-boat.png"
             alt="Felix Yacht - Luxury Yacht"
-            className="w-full h-full object-cover object-[65%_center] md:object-[60%_center] brightness-105 saturate-115"
+            className="w-full h-full object-cover object-[55%_18%] md:object-[60%_center] brightness-105 saturate-115"
           />
-          {/* Subtle luminous overlay to keep colors bright while preserving elegance */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081C3A]/20 via-transparent to-[#F5F7FA]/70 pointer-events-none" />
+          {/* Subtle luminous overlay - keep top completely clear for boat on mobile, smooth soft dark fade at bottom for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#081C3A]/25 to-[#081C3A]/85 md:from-[#081C3A]/20 md:via-transparent md:to-[#F5F7FA]/70 pointer-events-none" />
           <div 
             className="absolute inset-0 opacity-15 pointer-events-none" 
             style={{ 
@@ -74,28 +74,25 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 flex flex-col items-start justify-start pt-6 md:pt-10">
+        <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 flex flex-col items-center md:items-start justify-start pt-[200px] sm:pt-[230px] md:pt-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-[#081C3A]/75 backdrop-blur-xl border border-white/20 p-6 md:p-7 rounded-2xl shadow-2xl max-w-[400px] text-center w-full"
+            className="bg-transparent border-0 shadow-none p-0 backdrop-blur-none md:bg-[#081C3A]/75 md:backdrop-blur-xl md:border md:border-white/20 md:p-6 md:p-7 md:rounded-2xl md:shadow-2xl max-w-[400px] text-center w-full mx-auto md:mx-0"
           >
-            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-4">
+            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-3 md:mb-4 shadow-sm">
               Global Flag Specialists
             </div>
-            <h1 className="text-3xl md:text-[34px] font-light text-white mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-[34px] font-light text-white mb-3 md:mb-4 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
               Register Your Yacht <br /><span className="font-bold">Anywhere in the World</span>
             </h1>
-            <p className="text-white/80 text-xs md:text-sm font-light mb-6 leading-relaxed">
+            <p className="text-white/90 md:text-white/80 text-xs md:text-sm font-light mb-5 md:mb-6 leading-relaxed max-w-sm mx-auto md:mx-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none">
               {t('hero.subtitle')}
             </p>
-            <div className="flex items-center justify-center gap-3 w-full">
-              <Link to="/boat-registration" className="flex-1 bg-white text-[#081C3A] py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
+            <div className="flex items-center justify-center w-full">
+              <Link to="/boat-registration" className="w-full sm:w-auto sm:px-10 bg-white text-[#081C3A] py-3.5 px-6 font-bold uppercase text-xs tracking-wider rounded-xl shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
                 {t('btn.register')}
-              </Link>
-              <Link to="/boat-registration" className="flex-1 border border-white/30 text-white py-3 px-4 font-bold uppercase text-[11px] tracking-wider rounded backdrop-blur-md hover:bg-white/10 transition-all text-center">
-                {t('btn.quote')}
               </Link>
             </div>
           </motion.div>
@@ -104,7 +101,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-4 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/15 text-white/90 text-[10px] uppercase tracking-widest font-semibold shadow-lg"
+            className="mt-4 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/15 text-white/90 text-[10px] uppercase tracking-widest font-semibold shadow-lg mx-auto md:mx-0"
           >
             <span className="text-[var(--color-luxury-gold)]">★★★★★</span>
             <span>Trusted by 25,000+ Owners Worldwide</span>
