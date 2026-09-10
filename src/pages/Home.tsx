@@ -23,32 +23,33 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* ANIMATED WAVES BANNER */}
-      <div className="w-full h-[80px] mt-16 relative overflow-hidden bg-[#F5F7FA] border-b border-gray-200">
+      <div className="w-full h-[72px] mt-16 relative overflow-hidden bg-[#F5F7FA] border-b border-gray-200">
         <div
           className="absolute top-0 left-0 w-[200%] h-full animate-wave-slow z-0"
           style={{
             backgroundImage: "url('/wave1.png')",
             backgroundRepeat: "repeat-x",
-            backgroundSize: "auto 65px",
+            backgroundSize: "auto 58px",
             backgroundPosition: "bottom"
           }}
         />
 
-        {/* Sailing Yacht (crisp transparent original colors) */}
-        <div className="absolute bottom-2 left-0 z-30 animate-sail pointer-events-none">
+        {/* Sailing Yacht - Running behind front wave (z-10) */}
+        <div className="absolute bottom-1 left-0 z-10 animate-sail pointer-events-none">
           <img
             src="/yacht3.png"
             alt="Sailing Yacht"
-            className="h-[60px] w-auto block animate-yacht-bob"
+            className="h-[54px] w-auto block animate-yacht-bob"
           />
         </div>
 
+        {/* Front Wave (z-20) - overlaps the boat hull naturally */}
         <div
           className="absolute top-0 left-0 w-[200%] h-full animate-wave-fast z-20 pointer-events-none"
           style={{
             backgroundImage: "url('/wave2.png')",
             backgroundRepeat: "repeat-x",
-            backgroundSize: "auto 50px",
+            backgroundSize: "auto 45px",
             backgroundPosition: "bottom"
           }}
         />
@@ -81,19 +82,19 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="bg-transparent border-0 shadow-none p-0 backdrop-blur-none md:bg-[#081C3A]/75 md:backdrop-blur-xl md:border md:border-white/20 md:p-6 md:rounded-2xl md:shadow-2xl max-w-[390px] text-center w-full mx-auto md:mx-0"
           >
-            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-2.5 md:mb-3 shadow-sm">
-              Global Flag Specialists
+            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-2.5 md:mb-3 shadow-sm whitespace-nowrap">
+              {t('hero.badge')}
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-[32px] font-light text-white mb-2.5 md:mb-3 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
-              Register Your Yacht <br /><span className="font-bold">Anywhere in the World</span>
+              {t('hero.title_lead')} <br /><span className="font-bold">{t('hero.title_highlight')}</span>
             </h1>
-            <p className="text-white/90 md:text-white/80 text-xs md:text-sm font-light mb-4 md:mb-5 leading-relaxed max-w-sm mx-auto md:mx-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none">
+            <p className="text-white/90 md:text-white/80 text-xs md:text-sm font-light mb-4 md:mb-5 leading-relaxed max-w-sm mx-auto md:mx-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none min-h-[50px] md:min-h-[58px] flex items-center justify-center md:justify-start">
               {t('hero.subtitle')}
             </p>
             <div className="flex items-center justify-center w-full">
               <Link 
                 to="/boat-registration" 
-                className="w-auto px-6 py-2.5 text-[11px] md:px-9 md:py-3.5 md:text-xs bg-white text-[#081C3A] font-bold uppercase tracking-wider rounded-lg md:rounded-xl shadow-lg hover:bg-[#F5F7FA] hover:shadow-xl transition-all inline-block text-center"
+                className="w-auto px-6 py-2.5 text-[11px] md:px-9 md:py-3.5 md:text-xs bg-white text-[#081C3A] font-bold uppercase tracking-wider rounded-lg md:rounded-xl shadow-lg hover:bg-[#F5F7FA] hover:shadow-xl transition-all inline-flex items-center justify-center whitespace-nowrap text-center"
               >
                 {t('btn.register')}
               </Link>
@@ -104,10 +105,10 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-3.5 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-white/90 text-[9px] md:text-[10px] uppercase tracking-widest font-semibold shadow-lg mx-auto md:mx-0"
+            className="mt-3.5 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-white/90 text-[9px] md:text-[10px] uppercase tracking-widest font-semibold shadow-lg mx-auto md:mx-0 whitespace-nowrap"
           >
-            <span className="text-[var(--color-luxury-gold)]">★★★★★</span>
-            <span>Trusted by 25,000+ Owners Worldwide</span>
+            <span className="text-[var(--color-luxury-gold)] shrink-0">★★★★★</span>
+            <span className="whitespace-nowrap">{t('hero.trust')}</span>
           </motion.div>
         </div>
       </section>
