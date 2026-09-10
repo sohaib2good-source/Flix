@@ -55,13 +55,13 @@ export default function Home() {
       </div>
 
       {/* HERO SECTION */}
-      <section className="relative flex items-start overflow-hidden pb-14 pt-4 md:pb-16 md:pt-6 min-h-[620px] md:min-h-[580px]">
+      <section className="relative flex items-start overflow-hidden pb-12 pt-2 md:pb-16 md:pt-6 min-h-[580px] md:min-h-[560px]">
         {/* Bright Background Image - Main Boat */}
         <div className="absolute inset-0 z-0">
           <img
             src="/main-boat.png"
             alt="Felix Yacht - Luxury Yacht"
-            className="w-full h-full object-cover object-[55%_18%] md:object-[60%_center] brightness-105 saturate-115"
+            className="w-full h-full object-cover object-[50%_8%] md:object-[60%_center] brightness-105 saturate-115"
           />
           {/* Subtle luminous overlay - keep top completely clear for boat on mobile, smooth soft dark fade at bottom for text readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#081C3A]/25 to-[#081C3A]/85 md:from-[#081C3A]/20 md:via-transparent md:to-[#F5F7FA]/70 pointer-events-none" />
@@ -74,24 +74,27 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 flex flex-col items-center md:items-start justify-start pt-[200px] sm:pt-[230px] md:pt-10">
+        <div className="relative z-10 w-full px-6 md:px-10 lg:px-12 flex flex-col items-center md:items-start justify-start pt-[220px] sm:pt-[240px] md:pt-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="bg-transparent border-0 shadow-none p-0 backdrop-blur-none md:bg-[#081C3A]/75 md:backdrop-blur-xl md:border md:border-white/20 md:p-6 md:p-7 md:rounded-2xl md:shadow-2xl max-w-[400px] text-center w-full mx-auto md:mx-0"
+            className="bg-transparent border-0 shadow-none p-0 backdrop-blur-none md:bg-[#081C3A]/75 md:backdrop-blur-xl md:border md:border-white/20 md:p-6 md:rounded-2xl md:shadow-2xl max-w-[390px] text-center w-full mx-auto md:mx-0"
           >
-            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-3 md:mb-4 shadow-sm">
+            <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-luxury-gold)]/20 border border-[var(--color-luxury-gold)]/30 text-[var(--color-luxury-gold)] text-[9px] font-bold uppercase tracking-[0.2em] mb-2.5 md:mb-3 shadow-sm">
               Global Flag Specialists
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-[34px] font-light text-white mb-3 md:mb-4 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
+            <h1 className="text-2xl sm:text-3xl md:text-[32px] font-light text-white mb-2.5 md:mb-3 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
               Register Your Yacht <br /><span className="font-bold">Anywhere in the World</span>
             </h1>
-            <p className="text-white/90 md:text-white/80 text-xs md:text-sm font-light mb-5 md:mb-6 leading-relaxed max-w-sm mx-auto md:mx-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none">
+            <p className="text-white/90 md:text-white/80 text-xs md:text-sm font-light mb-4 md:mb-5 leading-relaxed max-w-sm mx-auto md:mx-0 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:drop-shadow-none">
               {t('hero.subtitle')}
             </p>
             <div className="flex items-center justify-center w-full">
-              <Link to="/boat-registration" className="w-full sm:w-auto sm:px-10 bg-white text-[#081C3A] py-3.5 px-6 font-bold uppercase text-xs tracking-wider rounded-xl shadow-xl hover:bg-[#F5F7FA] transition-all text-center">
+              <Link 
+                to="/boat-registration" 
+                className="w-auto px-6 py-2.5 text-[11px] md:px-9 md:py-3.5 md:text-xs bg-white text-[#081C3A] font-bold uppercase tracking-wider rounded-lg md:rounded-xl shadow-lg hover:bg-[#F5F7FA] hover:shadow-xl transition-all inline-block text-center"
+              >
                 {t('btn.register')}
               </Link>
             </div>
@@ -101,7 +104,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
-            className="mt-4 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/15 text-white/90 text-[10px] uppercase tracking-widest font-semibold shadow-lg mx-auto md:mx-0"
+            className="mt-3.5 inline-flex items-center justify-center space-x-2 bg-[#081C3A]/75 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-white/90 text-[9px] md:text-[10px] uppercase tracking-widest font-semibold shadow-lg mx-auto md:mx-0"
           >
             <span className="text-[var(--color-luxury-gold)]">★★★★★</span>
             <span>Trusted by 25,000+ Owners Worldwide</span>
@@ -169,28 +172,34 @@ export default function Home() {
       <StackingFeatures />
 
       {/* HOW IT WORKS */}
-      <section className="py-24 bg-white relative z-20">
+      <section className="py-16 md:py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-4">How It Works</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto text-lg">A streamlined, transparent process designed for your convenience.</p>
+          <div className="text-center mb-12 md:mb-20">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-[var(--color-primary-navy)] mb-3 md:mb-4">How It Works</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-lg">A streamlined, transparent process designed for your convenience.</p>
           </div>
 
           <div className="relative">
             <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -translate-y-1/2" />
-            <div className="grid md:grid-cols-4 gap-12 text-center relative z-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-6 md:gap-12 text-center relative z-10">
               {[
                 { step: '1', title: 'Choose Registry', desc: 'Select the best flag for your needs' },
                 { step: '2', title: 'Upload Documents', desc: 'Securely submit required paperwork' },
                 { step: '3', title: 'Government Review', desc: 'We handle the submission process' },
-                { step: '4', title: 'Receive Certificate', desc: 'Get your digital and physical copies' }
+                { step: '4', title: 'Receive Certificate', desc: 'Get your digital & physical copies' }
               ].map((step, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-[var(--color-primary-navy)] text-[var(--color-luxury-gold)] text-2xl font-bold flex items-center justify-center mb-6 shadow-lg border-4 border-white">
+                <div key={i} className="relative flex flex-col items-center p-3.5 sm:p-4 md:p-0 bg-gray-50/70 md:bg-transparent rounded-2xl md:rounded-none border border-gray-100 md:border-0 shadow-sm md:shadow-none">
+                  {/* Flow arrow on mobile: Step 1 -> Step 2, Step 3 -> Step 4 */}
+                  {(i === 0 || i === 2) && (
+                    <div className="md:hidden absolute top-6 -right-3 z-20 w-6 h-6 rounded-full bg-white border border-gray-200 text-[#081C3A] text-xs font-bold flex items-center justify-center shadow-md">
+                      →
+                    </div>
+                  )}
+                  <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[var(--color-primary-navy)] text-[var(--color-luxury-gold)] text-lg md:text-2xl font-bold flex items-center justify-center mb-3 md:mb-6 shadow-md border-2 md:border-4 border-white">
                     {step.step}
                   </div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-2">{step.title}</h4>
-                  <p className="text-gray-500">{step.desc}</p>
+                  <h4 className="text-xs sm:text-base md:text-xl font-bold text-gray-900 mb-1 md:mb-2">{step.title}</h4>
+                  <p className="text-gray-500 text-[11px] sm:text-xs md:text-base leading-tight md:leading-relaxed">{step.desc}</p>
                 </div>
               ))}
             </div>
@@ -233,25 +242,25 @@ export default function Home() {
       </section>
 
       {/* PRICE ESTIMATOR */}
-      <section className="py-24 bg-[var(--color-primary-navy)] text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-[var(--color-primary-navy)] text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-20" />
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Instant Quote Estimator</h2>
-            <p className="text-white/80 max-w-2xl mx-auto text-lg">Calculate an estimated cost for your yacht registration.</p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-heading font-bold mb-2 md:mb-4">Instant Quote Estimator</h2>
+            <p className="text-white/80 max-w-2xl mx-auto text-xs sm:text-sm md:text-lg">Calculate an estimated cost for your yacht registration.</p>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-white/20 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="bg-white/10 backdrop-blur-md p-5 sm:p-7 md:p-12 rounded-2xl md:rounded-3xl border border-white/20 shadow-2xl">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-8 mb-6 md:mb-8">
               <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Registry Flag</label>
-                <select className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
+                <label className="block text-[11px] sm:text-xs md:text-sm font-medium text-white/80 mb-1.5 md:mb-2">Registry Flag</label>
+                <select className="w-full bg-white/5 border border-white/20 rounded-lg md:rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 text-xs sm:text-sm md:text-base text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
                   <option value="poland" className="text-gray-900">Poland (EU) - Lifetime Flag</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Vessel Type</label>
-                <select className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
+                <label className="block text-[11px] sm:text-xs md:text-sm font-medium text-white/80 mb-1.5 md:mb-2">Vessel Type</label>
+                <select className="w-full bg-white/5 border border-white/20 rounded-lg md:rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 text-xs sm:text-sm md:text-base text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
                   <option value="motor" className="text-gray-900">Motor Yacht</option>
                   <option value="sailing" className="text-gray-900">Sailing Yacht</option>
                   <option value="catamaran" className="text-gray-900">Catamaran</option>
@@ -259,29 +268,29 @@ export default function Home() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Usage</label>
-                <select className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
+                <label className="block text-[11px] sm:text-xs md:text-sm font-medium text-white/80 mb-1.5 md:mb-2">Usage</label>
+                <select className="w-full bg-white/5 border border-white/20 rounded-lg md:rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 text-xs sm:text-sm md:text-base text-white appearance-none focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none">
                   <option value="private" className="text-gray-900">Private Use</option>
                   <option value="commercial" className="text-gray-900">Commercial / Charter</option>
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-white/80 mb-2">Vessel Length (Meters)</label>
+                <label className="block text-[11px] sm:text-xs md:text-sm font-medium text-white/80 mb-1.5 md:mb-2">Length (Meters)</label>
                 <input
                   type="number"
                   placeholder="e.g. 15.5"
-                  className="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 text-white focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none placeholder-white/30"
+                  className="w-full bg-white/5 border border-white/20 rounded-lg md:rounded-xl px-2.5 py-2 sm:px-3 sm:py-2.5 md:px-4 md:py-3 text-xs sm:text-sm md:text-base text-white focus:ring-2 focus:ring-[var(--color-luxury-gold)] focus:outline-none placeholder-white/30"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-6">
-              <div>
-                <div className="text-white/60 text-sm mb-1">Estimated Starting Price</div>
-                <div className="text-4xl font-bold text-[var(--color-luxury-gold)] font-heading">€490</div>
-                <div className="text-white/40 text-xs mt-1">*Final price may vary based on specific requirements</div>
+            <div className="flex flex-col md:flex-row items-center justify-between pt-5 md:pt-8 border-t border-white/10 gap-4 md:gap-6">
+              <div className="text-center md:text-left">
+                <div className="text-white/60 text-xs md:text-sm mb-0.5 md:mb-1">Estimated Starting Price</div>
+                <div className="text-3xl md:text-4xl font-bold text-[var(--color-luxury-gold)] font-heading">€490</div>
+                <div className="text-white/40 text-[10px] md:text-xs mt-0.5 md:mt-1">*Final price may vary based on specific requirements</div>
               </div>
-              <Link to="/register" className="w-full md:w-auto bg-[var(--color-luxury-gold)] text-[var(--color-primary-navy)] px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-all text-center">
+              <Link to="/register" className="w-full md:w-auto bg-[var(--color-luxury-gold)] text-[var(--color-primary-navy)] px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-lg hover:bg-white transition-all text-center shadow-lg">
                 Proceed to Registration
               </Link>
             </div>
